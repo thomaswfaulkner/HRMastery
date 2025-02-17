@@ -55,7 +55,7 @@ You are **free to share, modify, and use** these resources **with attribution**.
 **Dr. Thomas Faulkner** is a municipal HR leader with extensive experience in **public sector workforce development, training, and policy design**. He created this platform to **empower HR professionals and municipal employees** with essential tools and training.
 
 📩 **Connect with me on [LinkedIn]((https://www.linkedin.com/in/twfaulknerjr/))**  
-📧 **For inquiries, contact me at [your-email@example.com]**
+📧 **For inquiries, contact me at [thomas.w.faulkner@gmail.com]**
 
 ---
 
