@@ -7,7 +7,7 @@
   
   <!-- Bootstrap 5 CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
-
+  
   <!-- Custom Styles -->
   <style>
     :root {
@@ -19,14 +19,12 @@
       background-color: #f8f9fa;
       color: #333;
     }
-    /* Navbar */
     .navbar {
       background-color: var(--primary-color);
     }
     .navbar-brand, .nav-link {
       color: #fff !important;
     }
-    /* Section Title */
     .section-title {
       color: var(--primary-color);
       margin-top: 2rem;
@@ -34,7 +32,6 @@
       font-weight: 700;
       text-align: center;
     }
-    /* Form Styling */
     .contact-form {
       max-width: 600px;
       margin: 0 auto;
@@ -48,7 +45,6 @@
       background-color: #d6ab57;
       color: #000;
     }
-    /* Footer */
     footer {
       background-color: var(--primary-color);
       color: #fff;
@@ -78,7 +74,11 @@
           <li class="nav-item"><a class="nav-link" href="training.html">Pre-Built Courses</a></li>
           <li class="nav-item"><a class="nav-link" href="videos.html">Videos</a></li>
           <li class="nav-item"><a class="nav-link" href="publications.html">Publications</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="contributors.html">Contributors</a></li>
+          <li class="nav-item"><a class="nav-link" href="faq.html">FAQ</a></li>
           <li class="nav-item"><a class="nav-link active" aria-current="page" href="contact.html">Contact</a></li>
+          <li class="nav-item"><a class="nav-link" href="get-involved.html">Get Involved</a></li>
         </ul>
       </div>
     </div>
@@ -88,58 +88,53 @@
   <section class="container mt-5">
     <h2 class="section-title">Get in Touch</h2>
     <p class="text-center mb-4">
-      Have questions or need more information? Fill out the form below and your email client will open with a pre-filled email.
+      Have questions or need more information? Fill out the form below and your default email client will open with a pre-filled message.
     </p>
     <div class="contact-form">
-      <form id="contact-form">
+      <form id="contactForm">
         <div class="mb-3">
           <label for="name" class="form-label">Your Name</label>
-          <input type="text" class="form-control" id="name" name="name" placeholder="John Doe" required>
+          <input type="text" id="name" class="form-control" placeholder="John Doe" required>
         </div>
         <div class="mb-3">
           <label for="email" class="form-label">Your Email</label>
-          <input type="email" class="form-control" id="email" name="email" placeholder="john@example.com" required>
+          <input type="email" id="email" class="form-control" placeholder="john@example.com" required>
         </div>
         <div class="mb-3">
           <label for="message" class="form-label">Your Message</label>
-          <textarea class="form-control" id="message" name="message" rows="5" placeholder="How can I help you?" required></textarea>
+          <textarea id="message" class="form-control" rows="5" placeholder="How can I help you?" required></textarea>
         </div>
         <button type="submit" class="btn btn-accent">Send Message</button>
       </form>
     </div>
   </section>
-  
+
   <!-- Footer -->
   <footer>
-    <p>© 2025 The HR Leadership & Training Hub</p>
-    <p>
-      <a href="about.html">About</a> | 
-      <a href="https://www.linkedin.com/in/your-profile" target="_blank">LinkedIn</a>
-    </p>
+    <div class="container">
+      <p>© 2025 The HR Leadership & Training Hub</p>
+      <p>
+        <a href="about.html">About</a> | 
+        <a href="https://www.linkedin.com/in/your-profile" target="_blank">LinkedIn</a>
+      </p>
+    </div>
   </footer>
 
-  <!-- Bootstrap 5 JS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  
-  <!-- JavaScript to Build and Open the Mailto Link -->
+  <!-- JavaScript to Build and Open Mailto Link -->
   <script>
-    document.getElementById('contact-form').addEventListener('submit', function(event) {
+    document.getElementById('contactForm').addEventListener('submit', function(event) {
       event.preventDefault();
-      
       var name = document.getElementById('name').value;
       var email = document.getElementById('email').value;
       var message = document.getElementById('message').value;
-      
-      // Construct the subject and body of the email.
       var subject = encodeURIComponent('Message from ' + name);
       var body = encodeURIComponent('Name: ' + name + '\nEmail: ' + email + '\n\n' + message);
-      
-      // Replace with your email address.
       var mailtoLink = 'mailto:your-email@example.com?subject=' + subject + '&body=' + body;
-      
-      // Open the user's default email client.
       window.location.href = mailtoLink;
     });
   </script>
+  
+  <!-- Bootstrap 5 JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
