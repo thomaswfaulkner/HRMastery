@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Municipal HR Resource Hub</title>
+  
+  <!-- Bootstrap 5 CSS -->
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+  />
+
+  <!-- Optional: Your Custom CSS -->
+  <style>
+    /* Customize your color scheme here */
+    :root {
+      --primary-color: #1D3557;   /* Deep Blue */
+      --secondary-color: #457B9D; /* Cool Teal */
+      --accent-color: #E9C46A;    /* Soft Gold */
+    }
+
+    .navbar {
+      background-color: var(--primary-color);
+    }
+    .navbar-brand,
+    .nav-link,
+    .navbar-nav .nav-link {
+      color: #fff !important;
+    }
+    .hero {
+      background: var(--secondary-color);
+      color: #fff;
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+    .hero h1 {
+      font-weight: 700;
+    }
+    .section-title {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--primary-color);
+      font-weight: 600;
+    }
+    .card {
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      border: none;
+    }
+    footer {
+      background-color: var(--primary-color);
+      color: #fff;
+      padding: 1rem;
+      text-align: center;
+      margin-top: 2rem;
+    }
+    a.btn-accent {
+      background-color: var(--accent-color);
+      color: #000;
+      border: none;
+    }
+    a.btn-accent:hover {
+      background-color: #d6ab57;
+      color: #000;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="#">Muni HR Hub</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon" style="color: #fff;"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" href="templates.html">HR Templates</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="training.html">Training</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="videos.html">Videos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="publications.html">Publications</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="about.html">About</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <h1>Empowering Municipal HR</h1>
+      <p class="lead">
+        Your go-to resource for HR templates, training materials, and
+        certification prep in the public sector.
+      </p>
+      <a href="training.html" class="btn btn-accent mt-3">Explore Training</a>
+    </div>
+  </section>
+
+  <!-- Featured Sections -->
+  <section class="container mt-5">
+    <h2 class="section-title">Featured Resources</h2>
+    <div class="row g-4">
+      <!-- Card 1 -->
+      <div class="col-md-6 col-lg-3">
+        <div class="card p-3">
+          <div class="card-body">
+            <h5 class="card-title">HR Templates</h5>
+            <p class="card-text">
+              Download ready-to-use forms and policies to streamline your HR processes.
+            </p>
+            <a href="templates.html" class="btn btn-accent">View Templates</a>
+          </div>
+        </div>
+      </div>
+      <!-- Card 2 -->
+      <div class="col-md-6 col-lg-3">
+        <div class="card p-3">
+          <div class="card-body">
+            <h5 class="card-title">Training & Development</h5>
+            <p class="card-text">
+              Access self-paced learning modules, webinars, and best practices for municipal HR.
+            </p>
+            <a href="training.html" class="btn btn-accent">Go to Training</a>
+          </div>
+        </div>
+      </div>
+      <!-- Card 3 -->
+      <div class="col-md-6 col-lg-3">
+        <div class="card p-3">
+          <div class="card-body">
+            <h5 class="card-title">Video Hub</h5>
+            <p class="card-text">
+              Watch in-depth videos on HR leadership, compliance, and PHR/SPHR exam prep.
+            </p>
+            <a href="videos.html" class="btn btn-accent">Watch Videos</a>
+          </div>
+        </div>
+      </div>
+      <!-- Card 4 -->
+      <div class="col-md-6 col-lg-3">
+        <div class="card p-3">
+          <div class="card-body">
+            <h5 class="card-title">Publications</h5>
+            <p class="card-text">
+              Explore recommended books, articles, and research papers for public sector HR.
+            </p>
+            <a href="publications.html" class="btn btn-accent">View Publications</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Latest Updates Section -->
+  <section class="container mt-5">
+    <h2 class="section-title">Latest Updates</h2>
+    <div class="row">
+      <div class="col-12">
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+            <strong>New Template:</strong> Performance Improvement Plan (PIP) form
+          </li>
+          <li class="list-group-item">
+            <strong>New Training Module:</strong> Managing Employee Performance
+          </li>
+          <li class="list-group-item">
+            <strong>Upcoming Webinar:</strong> PHR/SPHR Study Tips (Date TBA)
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p class="mb-0">© 2025 Municipal HR Resource Hub</p>
+    <p class="mb-0">
+      <a href="about.html" style="color: #fff;">About</a> | 
+      <a href="https://www.linkedin.com/in/your-profile" target="_blank" style="color: #fff;">LinkedIn</a>
+    </p>
+  </footer>
+
+  <!-- Bootstrap 5 JS (for navbar toggle, etc.) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
