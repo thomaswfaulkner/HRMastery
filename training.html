@@ -12,29 +12,25 @@
   <style>
     :root {
       --primary-color: #1D3557;
-      --secondary-color: #457B9D;
       --accent-color: #E9C46A;
     }
-    /* Navbar */
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background-color: #f8f9fa;
+      color: #333;
+    }
     .navbar {
       background-color: var(--primary-color);
     }
     .navbar-brand, .nav-link {
       color: #fff !important;
     }
-    /* Section title */
     .section-title {
       color: var(--primary-color);
       margin-top: 2rem;
       margin-bottom: 1rem;
-      font-weight: 600;
+      font-weight: 700;
       text-align: center;
-    }
-    /* Card styling */
-    .card {
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      border: none;
-      margin-bottom: 20px;
     }
     .btn-accent {
       background-color: var(--accent-color);
@@ -45,17 +41,14 @@
       background-color: #d6ab57;
       color: #000;
     }
-    /* Footer */
-    footer {
-      background-color: var(--primary-color);
-      color: #fff;
-      text-align: center;
-      padding: 1rem 0;
-      margin-top: 2rem;
+    .card {
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      border: none;
+      margin-bottom: 20px;
     }
-    footer a {
-      color: #fff;
-      text-decoration: underline;
+    .card-img-top {
+      height: 250px;
+      object-fit: cover;
     }
   </style>
 </head>
@@ -76,108 +69,83 @@
           <li class="nav-item"><a class="nav-link" href="videos.html">Videos</a></li>
           <li class="nav-item"><a class="nav-link" href="publications.html">Publications</a></li>
           <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="contributors.html">Contributors</a></li>
+          <li class="nav-item"><a class="nav-link" href="faq.html">FAQ</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
         </ul>
       </div>
     </div>
   </nav>
   
-  <!-- Pre-Built Courses Section -->
-  <section class="container mt-5">
-    <h2 class="section-title">Pre-Built Courses</h2>
+  <!-- Search Bar -->
+  <div class="container mt-4">
+    <input type="text" id="searchInput" class="form-control" placeholder="Search Pre-Built Courses...">
+  </div>
+  
+  <!-- Pre-Built Courses Cards Section -->
+  <div id="cardContainer" class="container mt-4">
     <div class="row">
-      <!-- Course Card 1 -->
-      <div class="col-md-4">
+      <!-- Card 1: HR Fundamentals -->
+      <div class="col-md-4 mb-4">
         <div class="card">
           <img src="images/course1.jpg" class="card-img-top" alt="HR Fundamentals">
           <div class="card-body">
             <h5 class="card-title">HR Fundamentals</h5>
             <p class="card-text">
-              A comprehensive course covering HR essentials, from recruitment and onboarding to compliance and employee engagement.
+              A comprehensive course covering HR basics—from recruitment and onboarding to employee engagement—designed for municipal HR professionals.
             </p>
             <a href="documents/hr-fundamentals.ppt" class="btn btn-accent" download>Download Course</a>
           </div>
         </div>
       </div>
-      <!-- Course Card 2 -->
-      <div class="col-md-4">
+      
+      <!-- Card 2: Performance Management -->
+      <div class="col-md-4 mb-4">
         <div class="card">
-          <img src="images/course2.jpg" class="card-img-top" alt="Performance Management for Supervisors">
+          <img src="images/course2.jpg" class="card-img-top" alt="Performance Management">
           <div class="card-body">
-            <h5 class="card-title">Performance Management for Supervisors</h5>
+            <h5 class="card-title">Performance Management</h5>
             <p class="card-text">
-              This course offers practical tools for supervisors to manage and enhance employee performance with ready-to-use slides.
+              Tools and techniques for effective performance management and employee development tailored for public sector organizations.
             </p>
             <a href="documents/performance-management.ppt" class="btn btn-accent" download>Download Course</a>
           </div>
         </div>
       </div>
-      <!-- Course Card 3 -->
-      <div class="col-md-4">
+      
+      <!-- Card 3: Effective Communication -->
+      <div class="col-md-4 mb-4">
         <div class="card">
-          <img src="images/course3.jpg" class="card-img-top" alt="Effective Communication in HR">
+          <img src="images/course3.jpg" class="card-img-top" alt="Effective Communication">
           <div class="card-body">
-            <h5 class="card-title">Effective Communication in HR</h5>
+            <h5 class="card-title">Effective Communication</h5>
             <p class="card-text">
-              Enhance internal communications with a course designed to improve dialogue between HR, managers, and employees.
+              A course designed to improve communication strategies and conflict resolution skills within HR teams.
             </p>
             <a href="documents/effective-communication.ppt" class="btn btn-accent" download>Download Course</a>
           </div>
         </div>
       </div>
+      
+      <!-- Additional course cards can be added here following the same structure -->
     </div>
-    
-    <!-- Additional Courses Section (Optional) -->
-    <div class="row mt-4">
-      <!-- Course Card 4 -->
-      <div class="col-md-4">
-        <div class="card">
-          <img src="images/course4.jpg" class="card-img-top" alt="Workforce Development Strategies">
-          <div class="card-body">
-            <h5 class="card-title">Workforce Development Strategies</h5>
-            <p class="card-text">
-              A course that provides step-by-step strategies for talent development, succession planning, and employee growth.
-            </p>
-            <a href="documents/workforce-development.ppt" class="btn btn-accent" download>Download Course</a>
-          </div>
-        </div>
-      </div>
-      <!-- Course Card 5 -->
-      <div class="col-md-4">
-        <div class="card">
-          <img src="images/course5.jpg" class="card-img-top" alt="Legal Compliance in HR">
-          <div class="card-body">
-            <h5 class="card-title">Legal Compliance in HR</h5>
-            <p class="card-text">
-              Stay updated on legal requirements with a course focusing on labor laws, compliance best practices, and risk management.
-            </p>
-            <a href="documents/legal-compliance.ppt" class="btn btn-accent" download>Download Course</a>
-          </div>
-        </div>
-      </div>
-      <!-- Course Card 6 -->
-      <div class="col-md-4">
-        <div class="card">
-          <img src="images/course6.jpg" class="card-img-top" alt="Advanced HR Analytics">
-          <div class="card-body">
-            <h5 class="card-title">Advanced HR Analytics</h5>
-            <p class="card-text">
-              Learn how to harness data for strategic decision-making in HR with this in-depth course, featuring actionable insights.
-            </p>
-            <a href="documents/hr-analytics.ppt" class="btn btn-accent" download>Download Course</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+  </div>
   
-  <!-- Footer -->
-  <footer>
-    <p>© 2025 The HR Leadership & Training Hub</p>
-    <p>
-      <a href="about.html">About</a> | 
-      <a href="https://www.linkedin.com/in/your-profile" target="_blank">LinkedIn</a>
-    </p>
-  </footer>
+  <!-- JavaScript for Filtering -->
+  <script>
+    document.getElementById('searchInput').addEventListener('keyup', function() {
+      const filter = this.value.toLowerCase();
+      const cards = document.querySelectorAll('#cardContainer .card');
+      cards.forEach(function(card) {
+        const cardText = card.innerText.toLowerCase();
+        if (cardText.includes(filter)) {
+          card.parentElement.style.display = "block";
+        } else {
+          card.parentElement.style.display = "none";
+        }
+      });
+    });
+  </script>
   
   <!-- Bootstrap 5 JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
