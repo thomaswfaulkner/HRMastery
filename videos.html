@@ -6,38 +6,41 @@
   <title>The HR Leadership & Training Hub - Videos</title>
   
   <!-- Bootstrap 5 CSS -->
-  <link
-    rel="stylesheet"
-    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
-  />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
   
   <!-- Custom Styles -->
   <style>
     :root {
       --primary-color: #1D3557;
-      --secondary-color: #457B9D;
       --accent-color: #E9C46A;
     }
-    /* Navbar */
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background-color: #f8f9fa;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
     .navbar {
       background-color: var(--primary-color);
     }
     .navbar-brand, .nav-link {
       color: #fff !important;
     }
-    /* Section Title */
     .section-title {
       color: var(--primary-color);
-      margin-top: 2rem;
-      margin-bottom: 1rem;
-      font-weight: 600;
+      margin: 2rem 0 1rem;
+      font-weight: 700;
       text-align: center;
     }
-    /* Card Styling */
     .card {
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
       border: none;
-      margin-bottom: 20px;
+      margin-bottom: 30px;
+    }
+    .card-img-top {
+      height: 250px;
+      object-fit: cover;
     }
     .btn-accent {
       background-color: var(--accent-color);
@@ -48,7 +51,6 @@
       background-color: #d6ab57;
       color: #000;
     }
-    /* Footer */
     footer {
       background-color: var(--primary-color);
       color: #fff;
@@ -79,26 +81,30 @@
           <li class="nav-item"><a class="nav-link active" aria-current="page" href="videos.html">Videos</a></li>
           <li class="nav-item"><a class="nav-link" href="publications.html">Publications</a></li>
           <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="contributors.html">Contributors</a></li>
+          <li class="nav-item"><a class="nav-link" href="faq.html">FAQ</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+          <li class="nav-item"><a class="nav-link" href="get-involved.html">Get Involved</a></li>
         </ul>
       </div>
     </div>
   </nav>
-
+  
   <!-- Videos Section -->
   <section class="container mt-5">
     <h2 class="section-title">Video Playlists</h2>
     <p class="text-center mb-4">
-      Explore our curated YouTube playlists covering essential HR topics. Click any playlist below to start learning!
+      Explore our curated YouTube playlists covering essential HR topics. Click any playlist below to start watching.
     </p>
     <div class="row">
       <!-- Playlist Card 1: HR Certification Prep -->
-      <div class="col-md-4">
+      <div class="col-md-4 mb-4">
         <div class="card">
-          <img src="images/playlist1.jpg" class="card-img-top" alt="HR Certification Prep" />
+          <img src="images/playlist1.jpg" class="card-img-top" alt="HR Certification Prep">
           <div class="card-body">
             <h5 class="card-title">HR Certification Prep</h5>
             <p class="card-text">
-              Prepare for your HR certification with comprehensive study guides, exam tips, and practice materials.
+              Prepare for your HR certification with study guides, exam tips, and practice sessions.
             </p>
             <a href="https://www.youtube.com/playlist?list=YOUR_PLAYLIST_ID_1" target="_blank" class="btn btn-accent">Watch Playlist</a>
           </div>
@@ -106,13 +112,13 @@
       </div>
       
       <!-- Playlist Card 2: Leadership Development -->
-      <div class="col-md-4">
+      <div class="col-md-4 mb-4">
         <div class="card">
-          <img src="images/playlist2.jpg" class="card-img-top" alt="Leadership Development" />
+          <img src="images/playlist2.jpg" class="card-img-top" alt="Leadership Development">
           <div class="card-body">
             <h5 class="card-title">Leadership Development</h5>
             <p class="card-text">
-              Enhance your leadership skills with strategies, best practices, and real-world insights for HR leaders.
+              Enhance your leadership skills with real-world insights and best practices for HR leaders.
             </p>
             <a href="https://www.youtube.com/playlist?list=YOUR_PLAYLIST_ID_2" target="_blank" class="btn btn-accent">Watch Playlist</a>
           </div>
@@ -120,13 +126,13 @@
       </div>
       
       <!-- Playlist Card 3: Performance Management -->
-      <div class="col-md-4">
+      <div class="col-md-4 mb-4">
         <div class="card">
-          <img src="images/playlist3.jpg" class="card-img-top" alt="Performance Management" />
+          <img src="images/playlist3.jpg" class="card-img-top" alt="Performance Management">
           <div class="card-body">
             <h5 class="card-title">Performance Management</h5>
             <p class="card-text">
-              Learn effective techniques to manage, evaluate, and improve employee performance.
+              Learn effective techniques to manage and evaluate employee performance in a municipal setting.
             </p>
             <a href="https://www.youtube.com/playlist?list=YOUR_PLAYLIST_ID_3" target="_blank" class="btn btn-accent">Watch Playlist</a>
           </div>
@@ -136,13 +142,13 @@
     
     <div class="row mt-4">
       <!-- Playlist Card 4: Employee Life Cycle -->
-      <div class="col-md-4">
+      <div class="col-md-4 mb-4">
         <div class="card">
-          <img src="images/playlist4.jpg" class="card-img-top" alt="Employee Life Cycle" />
+          <img src="images/playlist4.jpg" class="card-img-top" alt="Employee Life Cycle">
           <div class="card-body">
             <h5 class="card-title">Employee Life Cycle</h5>
             <p class="card-text">
-              Explore all stages of the employee journey—from recruitment to exit—and optimize every touchpoint.
+              Discover best practices for managing every stage of the employee journey, from recruitment to exit.
             </p>
             <a href="https://www.youtube.com/playlist?list=YOUR_PLAYLIST_ID_4" target="_blank" class="btn btn-accent">Watch Playlist</a>
           </div>
@@ -150,9 +156,9 @@
       </div>
       
       <!-- Playlist Card 5: Learning & Development -->
-      <div class="col-md-4">
+      <div class="col-md-4 mb-4">
         <div class="card">
-          <img src="images/playlist5.jpg" class="card-img-top" alt="Learning & Development" />
+          <img src="images/playlist5.jpg" class="card-img-top" alt="Learning & Development">
           <div class="card-body">
             <h5 class="card-title">Learning & Development</h5>
             <p class="card-text">
@@ -164,29 +170,27 @@
       </div>
       
       <!-- Playlist Card 6: HR Compliance & Legal Essentials -->
-      <div class="col-md-4">
+      <div class="col-md-4 mb-4">
         <div class="card">
-          <img src="images/playlist6.jpg" class="card-img-top" alt="HR Compliance & Legal Essentials" />
+          <img src="images/playlist6.jpg" class="card-img-top" alt="HR Compliance & Legal Essentials">
           <div class="card-body">
             <h5 class="card-title">HR Compliance & Legal Essentials</h5>
             <p class="card-text">
-              Stay informed on legal updates and compliance best practices to protect your organization.
+              Stay up to date on legal requirements and best practices to ensure your HR operations remain compliant.
             </p>
             <a href="https://www.youtube.com/playlist?list=YOUR_PLAYLIST_ID_6" target="_blank" class="btn btn-accent">Watch Playlist</a>
           </div>
         </div>
       </div>
-    </div>
-    
-    <div class="row mt-4">
-      <!-- Playlist Card 7: Change Management & Organizational Development -->
-      <div class="col-md-4">
+      
+      <!-- Playlist Card 7: Change Management & Org. Development -->
+      <div class="col-md-4 mb-4">
         <div class="card">
-          <img src="images/playlist7.jpg" class="card-img-top" alt="Change Management & Organizational Development" />
+          <img src="images/playlist7.jpg" class="card-img-top" alt="Change Management & Org. Development">
           <div class="card-body">
-            <h5 class="card-title">Change Management & Organizational Development</h5>
+            <h5 class="card-title">Change Management & Org. Development</h5>
             <p class="card-text">
-              Discover strategies to effectively manage change and drive organizational growth.
+              Explore strategies for managing organizational change and driving growth through development initiatives.
             </p>
             <a href="https://www.youtube.com/playlist?list=YOUR_PLAYLIST_ID_7" target="_blank" class="btn btn-accent">Watch Playlist</a>
           </div>
@@ -194,13 +198,13 @@
       </div>
       
       <!-- Playlist Card 8: HR Strategy & Business Alignment -->
-      <div class="col-md-4">
+      <div class="col-md-4 mb-4">
         <div class="card">
-          <img src="images/playlist8.jpg" class="card-img-top" alt="HR Strategy & Business Alignment" />
+          <img src="images/playlist8.jpg" class="card-img-top" alt="HR Strategy & Business Alignment">
           <div class="card-body">
             <h5 class="card-title">HR Strategy & Business Alignment</h5>
             <p class="card-text">
-              Align HR initiatives with your business strategy for sustainable growth and competitive advantage.
+              Align HR initiatives with business strategy for sustainable growth and competitive advantage.
             </p>
             <a href="https://www.youtube.com/playlist?list=YOUR_PLAYLIST_ID_8" target="_blank" class="btn btn-accent">Watch Playlist</a>
           </div>
@@ -208,13 +212,13 @@
       </div>
       
       <!-- Playlist Card 9: Employee Relations & Conflict Resolution -->
-      <div class="col-md-4">
+      <div class="col-md-4 mb-4">
         <div class="card">
-          <img src="images/playlist9.jpg" class="card-img-top" alt="Employee Relations & Conflict Resolution" />
+          <img src="images/playlist9.jpg" class="card-img-top" alt="Employee Relations & Conflict Resolution">
           <div class="card-body">
             <h5 class="card-title">Employee Relations & Conflict Resolution</h5>
             <p class="card-text">
-              Gain insights into managing workplace conflicts and fostering a positive, collaborative environment.
+              Gain insights into managing workplace conflicts and fostering a collaborative environment.
             </p>
             <a href="https://www.youtube.com/playlist?list=YOUR_PLAYLIST_ID_9" target="_blank" class="btn btn-accent">Watch Playlist</a>
           </div>
@@ -222,13 +226,13 @@
       </div>
       
       <!-- Playlist Card 10: HR for Startups & Small Businesses -->
-      <div class="col-md-4">
+      <div class="col-md-4 mb-4">
         <div class="card">
-          <img src="images/playlist10.jpg" class="card-img-top" alt="HR for Startups & Small Businesses" />
+          <img src="images/playlist10.jpg" class="card-img-top" alt="HR for Startups & Small Businesses">
           <div class="card-body">
             <h5 class="card-title">HR for Startups & Small Businesses</h5>
             <p class="card-text">
-              Tailored insights and practical strategies to build robust HR practices for startups and small enterprises.
+              Tailored insights and strategies to build robust HR practices for startups and small enterprises.
             </p>
             <a href="https://www.youtube.com/playlist?list=YOUR_PLAYLIST_ID_10" target="_blank" class="btn btn-accent">Watch Playlist</a>
           </div>
@@ -239,11 +243,13 @@
   
   <!-- Footer -->
   <footer>
-    <p>© 2025 The HR Leadership & Training Hub</p>
-    <p>
-      <a href="about.html">About</a> | 
-      <a href="https://www.linkedin.com/in/your-profile" target="_blank">LinkedIn</a>
-    </p>
+    <div class="container">
+      <p>© 2025 The HR Leadership & Training Hub</p>
+      <p>
+        <a href="about.html">About</a> | 
+        <a href="https://www.linkedin.com/in/your-profile" target="_blank">LinkedIn</a>
+      </p>
+    </div>
   </footer>
   
   <!-- Bootstrap 5 JS -->
