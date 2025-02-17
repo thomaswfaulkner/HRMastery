@@ -80,7 +80,47 @@
       </div>
     </div>
   </nav>
-  
+  <!-- Search Bar -->
+<div class="container mt-4">
+  <input type="text" id="searchInput" class="form-control" placeholder="Search HR Templates...">
+</div>
+
+<!-- Card Container -->
+<div id="cardContainer" class="container mt-4">
+  <div class="row">
+    <!-- Example Card -->
+    <div class="col-md-4 mb-4">
+      <div class="card">
+        <img src="images/template1.jpg" class="card-img-top" alt="Employee Handbook">
+        <div class="card-body">
+          <h5 class="card-title">Employee Handbook</h5>
+          <p class="card-text">
+            A comprehensive handbook outlining policies and employee benefits for municipal HR departments.
+          </p>
+          <a href="documents/employee-handbook.pdf" class="btn btn-accent" download>Download</a>
+        </div>
+      </div>
+    </div>
+    <!-- Repeat additional cards similarly -->
+  </div>
+</div>
+
+<!-- JavaScript for Filtering -->
+<script>
+  document.getElementById('searchInput').addEventListener('keyup', function() {
+    const filter = this.value.toLowerCase();
+    const cards = document.querySelectorAll('#cardContainer .card');
+    cards.forEach(function(card) {
+      const cardText = card.innerText.toLowerCase();
+      if (cardText.includes(filter)) {
+        card.parentElement.style.display = "block"; // Show the card's column container
+      } else {
+        card.parentElement.style.display = "none"; // Hide the card's column container
+      }
+    });
+  });
+</script>
+
   <!-- HR Templates Section -->
   <section class="container mt-5">
     <h2 class="section-title">HR Templates</h2>
