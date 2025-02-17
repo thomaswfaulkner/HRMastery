@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Municipal HR Resource Hub</title>
   
   <!-- Bootstrap 5 CSS -->
@@ -10,58 +10,99 @@
     rel="stylesheet"
     href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
   />
-
-  <!-- Optional: Your Custom CSS -->
+  
+  <!-- Custom Styles -->
   <style>
-    /* Customize your color scheme here */
     :root {
       --primary-color: #1D3557;   /* Deep Blue */
       --secondary-color: #457B9D; /* Cool Teal */
       --accent-color: #E9C46A;    /* Soft Gold */
     }
 
+    /* Navbar */
     .navbar {
       background-color: var(--primary-color);
     }
-    .navbar-brand,
-    .nav-link,
-    .navbar-nav .nav-link {
+    .navbar-brand, .nav-link {
       color: #fff !important;
     }
+    .navbar-toggler-icon {
+      filter: invert(100%);
+    }
+
+    /* Hero Section with Background Image */
     .hero {
-      background: var(--secondary-color);
-      color: #fff;
-      padding: 4rem 2rem;
+      min-height: 70vh;
+      background: url("images/hero-bg.jpg") center center / cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       text-align: center;
+      color: #fff;
+      padding: 3rem 1rem;
+      position: relative;
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background-color: rgba(0, 0, 0, 0.4); /* dark overlay for readability */
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
     }
     .hero h1 {
+      font-size: 3rem;
       font-weight: 700;
-    }
-    .section-title {
-      margin-top: 2rem;
       margin-bottom: 1rem;
-      color: var(--primary-color);
-      font-weight: 600;
     }
-    .card {
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-      border: none;
+    .hero p {
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin: 0 auto 1.5rem;
     }
-    footer {
-      background-color: var(--primary-color);
-      color: #fff;
-      padding: 1rem;
-      text-align: center;
-      margin-top: 2rem;
+
+    /* Carousel */
+    .carousel-item img {
+      object-fit: cover;
+      height: 400px;
     }
-    a.btn-accent {
+    .carousel-caption {
+      background-color: rgba(0, 0, 0, 0.5);
+      border-radius: 0.5rem;
+    }
+
+    /* Accent Button */
+    .btn-accent {
       background-color: var(--accent-color);
       color: #000;
       border: none;
     }
-    a.btn-accent:hover {
+    .btn-accent:hover {
       background-color: #d6ab57;
       color: #000;
+    }
+
+    /* Section Titles */
+    .section-title {
+      color: var(--primary-color);
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      font-weight: 600;
+      text-align: center;
+    }
+
+    /* Footer */
+    footer {
+      background-color: var(--primary-color);
+      color: #fff;
+      text-align: center;
+      padding: 1rem 0;
+      margin-top: 2rem;
+    }
+    footer a {
+      color: #fff;
+      text-decoration: underline;
     }
   </style>
 </head>
@@ -75,99 +116,76 @@
         class="navbar-toggler"
         type="button"
         data-bs-toggle="collapse"
-        data-bs-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent"
+        data-bs-target="#navbarNav"
+        aria-controls="navbarNav"
         aria-expanded="false"
         aria-label="Toggle navigation"
       >
-        <span class="navbar-toggler-icon" style="color: #fff;"></span>
+        <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link" href="templates.html">HR Templates</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="training.html">Training</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="videos.html">Videos</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="publications.html">Publications</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="about.html">About</a>
-          </li>
+          <li class="nav-item"><a class="nav-link" href="templates.html">HR Templates</a></li>
+          <li class="nav-item"><a class="nav-link" href="training.html">Training</a></li>
+          <li class="nav-item"><a class="nav-link" href="videos.html">Videos</a></li>
+          <li class="nav-item"><a class="nav-link" href="publications.html">Publications</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
         </ul>
       </div>
     </div>
   </nav>
 
-  <!-- Hero Section -->
+  <!-- Hero Section with Overlay -->
   <section class="hero">
-    <div class="container">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
       <h1>Empowering Municipal HR</h1>
       <p class="lead">
-        Your go-to resource for HR templates, training materials, and
-        certification prep in the public sector.
+        Your go-to resource for HR templates, training materials, and certification prep in the public sector.
       </p>
-      <a href="training.html" class="btn btn-accent mt-3">Explore Training</a>
+      <a href="training.html" class="btn btn-accent">Explore Training</a>
     </div>
   </section>
 
-  <!-- Featured Sections -->
+  <!-- Featured Resources Carousel -->
   <section class="container mt-5">
     <h2 class="section-title">Featured Resources</h2>
-    <div class="row g-4">
-      <!-- Card 1 -->
-      <div class="col-md-6 col-lg-3">
-        <div class="card p-3">
-          <div class="card-body">
-            <h5 class="card-title">HR Templates</h5>
-            <p class="card-text">
-              Download ready-to-use forms and policies to streamline your HR processes.
-            </p>
-            <a href="templates.html" class="btn btn-accent">View Templates</a>
+    <div id="featuredCarousel" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <!-- Slide 1 -->
+        <div class="carousel-item active">
+          <img src="images/slide1.jpg" class="d-block w-100" alt="HR Templates Slide">
+          <div class="carousel-caption d-none d-md-block">
+            <h5>HR Templates</h5>
+            <p>Download ready-to-use forms and policies to streamline your HR processes.</p>
+          </div>
+        </div>
+        <!-- Slide 2 -->
+        <div class="carousel-item">
+          <img src="images/slide2.jpg" class="d-block w-100" alt="Training Slide">
+          <div class="carousel-caption d-none d-md-block">
+            <h5>Training & Development</h5>
+            <p>Access self-paced learning modules, webinars, and best practices for municipal HR.</p>
+          </div>
+        </div>
+        <!-- Slide 3 -->
+        <div class="carousel-item">
+          <img src="images/slide3.jpg" class="d-block w-100" alt="Video Training Slide">
+          <div class="carousel-caption d-none d-md-block">
+            <h5>Video Hub</h5>
+            <p>Watch in-depth videos on HR leadership, compliance, and PHR/SPHR exam prep.</p>
           </div>
         </div>
       </div>
-      <!-- Card 2 -->
-      <div class="col-md-6 col-lg-3">
-        <div class="card p-3">
-          <div class="card-body">
-            <h5 class="card-title">Training & Development</h5>
-            <p class="card-text">
-              Access self-paced learning modules, webinars, and best practices for municipal HR.
-            </p>
-            <a href="training.html" class="btn btn-accent">Go to Training</a>
-          </div>
-        </div>
-      </div>
-      <!-- Card 3 -->
-      <div class="col-md-6 col-lg-3">
-        <div class="card p-3">
-          <div class="card-body">
-            <h5 class="card-title">Video Hub</h5>
-            <p class="card-text">
-              Watch in-depth videos on HR leadership, compliance, and PHR/SPHR exam prep.
-            </p>
-            <a href="videos.html" class="btn btn-accent">Watch Videos</a>
-          </div>
-        </div>
-      </div>
-      <!-- Card 4 -->
-      <div class="col-md-6 col-lg-3">
-        <div class="card p-3">
-          <div class="card-body">
-            <h5 class="card-title">Publications</h5>
-            <p class="card-text">
-              Explore recommended books, articles, and research papers for public sector HR.
-            </p>
-            <a href="publications.html" class="btn btn-accent">View Publications</a>
-          </div>
-        </div>
-      </div>
+      <!-- Carousel Controls -->
+      <button class="carousel-control-prev" type="button" data-bs-target="#featuredCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#featuredCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
     </div>
   </section>
 
@@ -195,12 +213,12 @@
   <footer>
     <p class="mb-0">© 2025 Municipal HR Resource Hub</p>
     <p class="mb-0">
-      <a href="about.html" style="color: #fff;">About</a> | 
-      <a href="https://www.linkedin.com/in/your-profile" target="_blank" style="color: #fff;">LinkedIn</a>
+      <a href="about.html">About</a> | 
+      <a href="https://www.linkedin.com/in/your-profile" target="_blank">LinkedIn</a>
     </p>
   </footer>
 
-  <!-- Bootstrap 5 JS (for navbar toggle, etc.) -->
+  <!-- Bootstrap 5 JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
