@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The HR Leadership & Training Hub - About</title>
+  
+  <!-- Bootstrap 5 CSS -->
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+  />
+  
+  <!-- Custom Styles -->
+  <style>
+    :root {
+      --primary-color: #1D3557;   /* Deep Blue */
+      --secondary-color: #457B9D; /* Cool Teal */
+      --accent-color: #E9C46A;    /* Soft Gold */
+    }
+    
+    /* Navbar */
+    .navbar {
+      background-color: var(--primary-color);
+    }
+    .navbar-brand, .nav-link {
+      color: #fff !important;
+    }
+    
+    /* Section Title */
+    .section-title {
+      color: var(--primary-color);
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      font-weight: 600;
+      text-align: center;
+    }
+    
+    /* Profile Picture */
+    .profile-pic {
+      width: 200px;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 5px solid var(--accent-color);
+      margin-bottom: 1rem;
+    }
+    
+    /* Accent Button */
+    .btn-accent {
+      background-color: var(--accent-color);
+      color: #000;
+      border: none;
+    }
+    .btn-accent:hover {
+      background-color: #d6ab57;
+      color: #000;
+    }
+    
+    /* Footer */
+    footer {
+      background-color: var(--primary-color);
+      color: #fff;
+      text-align: center;
+      padding: 1rem 0;
+      margin-top: 2rem;
+    }
+    footer a {
+      color: #fff;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="index.html">The HR Leadership & Training Hub</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="templates.html">HR Templates</a></li>
+          <li class="nav-item"><a class="nav-link" href="training.html">Training</a></li>
+          <li class="nav-item"><a class="nav-link" href="videos.html">Videos</a></li>
+          <li class="nav-item"><a class="nav-link" href="publications.html">Publications</a></li>
+          <li class="nav-item"><a class="nav-link active" aria-current="page" href="about.html">About</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- About Section -->
+  <section class="container mt-5">
+    <h2 class="section-title">About Me</h2>
+    <div class="row align-items-center">
+      <!-- Profile Picture -->
+      <div class="col-md-4 text-center">
+        <img src="images/profile.jpg" alt="Profile Picture" class="profile-pic" />
+      </div>
+      <!-- Bio and Statements -->
+      <div class="col-md-8">
+        <h3>Dr. Thomas Faulkner</h3>
+        <p>
+          I am a seasoned HR professional with extensive experience in municipal human resources, leadership training, and workforce development. My passion for empowering public sector employees drives me to create innovative solutions that streamline HR processes and enhance employee engagement.
+        </p>
+        
+        <h4>Mission</h4>
+        <p>
+          To empower municipal HR professionals and public sector leaders with the tools and knowledge they need to foster efficient, innovative, and supportive workplace environments.
+        </p>
+        
+        <h4>Vision</h4>
+        <p>
+          To be recognized as the leading source of HR best practices and professional development in the public sector, driving excellence and continuous improvement in HR management.
+        </p>
+        
+        <h4>Purpose</h4>
+        <p>
+          This hub is dedicated to providing practical HR templates, training materials, and certification resources that address the unique challenges of municipal HR, enabling organizations to thrive in a dynamic environment.
+        </p>
+        
+        <!-- Resume Link -->
+        <a href="documents/resume.pdf" class="btn btn-accent" download>Download My Resume</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 The HR Leadership & Training Hub</p>
+    <p>
+      <a href="https://www.linkedin.com/in/your-profile" target="_blank">LinkedIn</a> |
+      <a href="index.html">Home</a>
+    </p>
+  </footer>
+
+  <!-- Bootstrap 5 JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
