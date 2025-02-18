@@ -52,6 +52,13 @@
       height: 250px;
       object-fit: contain;
     }
+        /* For document preview cards (using <embed>) */
+    .doc-preview {
+      height: 250px;
+      width: 100%;
+      border: none;
+      background-color: #fff;
+    }
   </style>
 </head>
 <body>
@@ -88,7 +95,7 @@
   <!-- HR Templates Cards Section -->
   <div id="cardContainer" class="container mt-4">
     <div class="row">
-      <!-- Card 1: Employee Handbook -->
+      <!-- Card 1: FACTS Framework -->
       <div class="col-md-4 mb-4">
         <div class="card">
           <img src="images/FACTS A framework for Effective performance documentation (2).jpg" class="card-img-top" alt="Employee Handbook">
@@ -104,7 +111,7 @@
       <!-- Card 2: Recruitment Plan -->
       <div class="col-md-4 mb-4">
         <div class="card">
-          <img src="images/template2.jpg" class="card-img-top" alt="Recruitment Plan">
+          <embed src="documents/Recruitment Plan.docx#page=1" class="doc-preview" type="application/pdf">
           <div class="card-body">
             <h5 class="card-title">Recruitment Plan</h5>
             <p class="card-text">
@@ -118,7 +125,7 @@
       <!-- Card 3: Tactical Plan -->
       <div class="col-md-4 mb-4">
         <div class="card">
-          <img src="images/template3.jpg" class="card-img-top" alt="Tactical Plan">
+          <embed src="documents/Tactical Plan Document.docx#page=1" class="doc-preview" type="application/pdf">
           <div class="card-body">
             <h5 class="card-title">Tactical Plan</h5>
             <p class="card-text">
@@ -132,7 +139,7 @@
       <!-- Card 4 -->
       <div class="col-md-4 mb-4">
         <div class="card">
-          <img src="images/template3.jpg" class="card-img-top" alt="Change Management Plan">
+          <embed src="documents/Change Management Plan.xlsx#page=1" class="doc-preview" type="application/pdf">
           <div class="card-body">
             <h5 class="card-title">Change Management Plan</h5>
             <p class="card-text">
@@ -146,7 +153,7 @@
       <!-- Card 5 -->
       <div class="col-md-4 mb-4">
         <div class="card">
-          <img src="documents/OTJ Training_Blank.docx" class="card-img-top" alt="OJT Template">
+          <embed src="documents/OTJ_Training_Blank.pdf#page=1" class="doc-preview" type="application/pdf">
           <div class="card-body">
             <h5 class="card-title">On-The-Job Training Template</h5>
             <p class="card-text">
