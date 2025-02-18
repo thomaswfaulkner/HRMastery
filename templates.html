@@ -48,11 +48,12 @@
       border: none;
       margin-bottom: 20px;
     }
+    /* For image preview cards */
     .card-img-top {
       height: 250px;
       object-fit: contain;
     }
-        /* For document preview cards (using <embed>) */
+    /* For document preview cards using <iframe> */
     .doc-preview {
       height: 250px;
       width: 100%;
@@ -95,23 +96,25 @@
   <!-- HR Templates Cards Section -->
   <div id="cardContainer" class="container mt-4">
     <div class="row">
-      <!-- Card 1: FACTS Framework -->
+      <!-- Card 1: FACTS Model (Image preview) -->
       <div class="col-md-4 mb-4">
         <div class="card">
-          <img src="images/FACTS A framework for Effective performance documentation (2).jpg" class="card-img-top" alt="Employee Handbook">
+          <img src="images/FACTS A framework for Effective performance documentation (2).jpg" class="card-img-top" alt="FACTS Model of Employee Discipline">
           <div class="card-body">
             <h5 class="card-title">FACTS Model of Employee Discipline</h5>
             <p class="card-text">
-              The FACTS model is a simple yet powerful tool to guide disciplinary actions.            </p>
+              The FACTS model is a simple yet powerful tool to guide disciplinary actions.
+            </p>
             <a href="images/FACTS A framework for Effective performance documentation (2).jpg" class="btn btn-accent" download>Download</a>
           </div>
         </div>
       </div>
       
-      <!-- Card 2: Recruitment Plan -->
+      <!-- Card 2: Recruitment Plan (Document preview via iframe) -->
       <div class="col-md-4 mb-4">
         <div class="card">
-          <embed src="documents/Recruitment Plan.docx#page=1" class="doc-preview" type="application/pdf">
+          <!-- Replace the URL below with your actual, URL-encoded file path on your domain -->
+          <iframe src="https://view.officeapps.live.com/op/embed.aspx?src=https://yourdomain.com/documents/Recruitment%20Plan.docx" class="doc-preview"></iframe>
           <div class="card-body">
             <h5 class="card-title">Recruitment Plan</h5>
             <p class="card-text">
@@ -122,48 +125,49 @@
         </div>
       </div>
       
-      <!-- Card 3: Tactical Plan -->
+      <!-- Card 3: Tactical Plan (Document preview via iframe) -->
       <div class="col-md-4 mb-4">
         <div class="card">
-          <embed src="documents/Tactical Plan Document.docx#page=1" class="doc-preview" type="application/pdf">
+          <!-- Replace the URL below with your actual, URL-encoded file path on your domain -->
+          <iframe src="https://view.officeapps.live.com/op/embed.aspx?src=https://yourdomain.com/documents/Tactical%20Plan%20Document.docx" class="doc-preview"></iframe>
           <div class="card-body">
             <h5 class="card-title">Tactical Plan</h5>
             <p class="card-text">
-            The tactical plan form serves as a structured tool to outline specific, measurable, achievable, relevant, and time-bound (SMART) goals, ensuring clear objectives, defined action steps, assigned responsibilities, and measurable outcomes for effective implementation.
+              The tactical plan form serves as a structured tool to outline SMART goals with clear objectives and actionable steps.
             </p>
             <a href="documents/Tactical Plan Document.docx" class="btn btn-accent" download>Download</a>
           </div>
         </div>
       </div>
       
-      <!-- Card 4 -->
+      <!-- Card 4: Change Management Plan (Document preview via iframe) -->
       <div class="col-md-4 mb-4">
         <div class="card">
-          <embed src="documents/Change Management Plan.xlsx#page=1" class="doc-preview" type="application/pdf">
+          <!-- Replace the URL below with your actual, URL-encoded file path on your domain -->
+          <iframe src="https://view.officeapps.live.com/op/embed.aspx?src=https://yourdomain.com/documents/Change%20Management%20Plan.xlsx" class="doc-preview"></iframe>
           <div class="card-body">
             <h5 class="card-title">Change Management Plan</h5>
             <p class="card-text">
-            The change management plan template provides a structured framework to guide the planning, communication, and implementation of organizational changes, ensuring clear objectives, stakeholder engagement, and measurable success in transition efforts.
+              A structured framework to guide planning, communication, and implementation of organizational changes.
             </p>
             <a href="documents/Change Management Plan.xlsx" class="btn btn-accent" download>Download</a>
           </div>
         </div>
       </div>
       
-      <!-- Card 5 -->
+      <!-- Card 5: On-The-Job Training Template (PDF preview) -->
       <div class="col-md-4 mb-4">
         <div class="card">
           <embed src="documents/OTJ_Training_Blank.pdf#page=1" class="doc-preview" type="application/pdf">
           <div class="card-body">
             <h5 class="card-title">On-The-Job Training Template</h5>
             <p class="card-text">
-            The On-the-Job Training (OJT) template is a structured tool that aligns training objectives with Knowledge, Skills, and Abilities (KSA), providing clear, actionable steps to ensure competency development, performance measurement, and successful role integration.
+              A structured tool that aligns training objectives with clear, actionable steps for competency development.
             </p>
             <a href="documents/OTJ Training_Blank.docx" class="btn btn-accent" download>Download</a>
           </div>
         </div>
       </div>
-
       
       <!-- Additional cards can be added here following the same structure -->
     </div>
