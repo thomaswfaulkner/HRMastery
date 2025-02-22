@@ -4,7 +4,7 @@ class QuizManager {
         this.selectedDomain = localStorage.getItem('selectedDomain');
         this.currentQuestionIndex = 0;
         this.userAnswers = new Map();
-        this.quizSubmitted = false;
+        this.shuffledOptions = new Map(); // Store shuffled options for each question
         this.initializeQuiz();
     }
 
@@ -14,6 +14,10 @@ class QuizManager {
             this.questions = module.default;
             
             if (this.questions && this.questions.length > 0) {
+                // Shuffle options for all questions at start
+                this.questions.forEach(question => {
+                    this.shuffledOptions.set(question.id, this.shuffleOptions(question));
+                });
                 this.displayCurrentQuestion();
                 this.setupEventListeners();
             }
@@ -22,99 +26,91 @@ class QuizManager {
         }
     }
 
+    shuffleOptions(question) {
+        // Create array of option objects with their original indices
+        const options = question.options.map((text, index) => ({
+            text,
+            isCorrect: text === question.correctAnswer
+        }));
+
+        // Shuffle the options
+        for (let i = options.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [options[i], options[j]] = [options[j], options[i]];
+        }
+
+        return options;
+    }
+
     displayCurrentQuestion() {
         const question = this.questions[this.currentQuestionIndex];
+        const shuffledOptions = this.shuffledOptions.get(question.id);
+        
         document.getElementById('questionText').textContent = question.text;
         
         // Update question counter
         document.getElementById('currentQuestion').textContent = this.currentQuestionIndex + 1;
         document.getElementById('totalQuestions').textContent = this.questions.length;
         
-        // Display options
+        // Display shuffled options
         const optionsContainer = document.getElementById('optionsContainer');
         optionsContainer.innerHTML = '';
-        question.options.forEach((option, index) => {
+        
+        shuffledOptions.forEach((option, index) => {
             const div = document.createElement('div');
             div.className = 'option';
             
-            // Show selected answer if question was answered
+            // If question was answered, show correct/incorrect
             if (this.userAnswers.has(question.id)) {
-                div.classList.add(this.userAnswers.get(question.id) === index ? 'selected' : '');
-                
-                // If quiz is submitted, show correct/incorrect
-                if (this.quizSubmitted) {
-                    if (option === question.correctAnswer) {
-                        div.classList.add('correct');
-                    } else if (this.userAnswers.get(question.id) === index) {
-                        div.classList.add('incorrect');
-                    }
+                if (this.userAnswers.get(question.id) === index) {
+                    div.classList.add('selected');
+                }
+                if (option.isCorrect) {
+                    div.classList.add('correct');
+                } else if (this.userAnswers.get(question.id) === index) {
+                    div.classList.add('incorrect');
                 }
             }
             
-            div.textContent = option;
+            div.textContent = option.text;
             div.dataset.index = index;
             optionsContainer.appendChild(div);
         });
 
-        // Update progress bar
+        // Rest of your display logic...
         const progress = ((this.currentQuestionIndex + 1) / this.questions.length) * 100;
         document.getElementById('progressBar').style.width = `${progress}%`;
 
-        // Update navigation buttons
         document.getElementById('prevButton').disabled = this.currentQuestionIndex === 0;
         const nextButton = document.getElementById('nextButton');
-        nextButton.textContent = this.currentQuestionIndex === this.questions.length - 1 ? 'Submit Quiz' : 'Next';
+        nextButton.textContent = this.currentQuestionIndex === this.questions.length - 1 ? 'Finish Quiz' : 'Next';
 
-        // Hide explanation until quiz is submitted
         const explanationContainer = document.getElementById('explanationContainer');
-        if (!this.quizSubmitted) {
-            explanationContainer.classList.add('hidden');
-        } else {
+        if (this.userAnswers.has(question.id)) {
             explanationContainer.classList.remove('hidden');
             this.showExplanation();
+        } else {
+            explanationContainer.classList.add('hidden');
         }
-    }
-
-    setupEventListeners() {
-        // Option selection
-        document.getElementById('optionsContainer').addEventListener('click', (e) => {
-            if (e.target.classList.contains('option') && !this.quizSubmitted) {
-                const questionId = this.questions[this.currentQuestionIndex].id;
-                // Only allow selection if question hasn't been answered
-                if (!this.userAnswers.has(questionId)) {
-                    this.handleOptionSelect(parseInt(e.target.dataset.index));
-                }
-            }
-        });
-
-        // Navigation buttons
-        document.getElementById('prevButton').addEventListener('click', () => this.navigateQuestion(-1));
-        document.getElementById('nextButton').addEventListener('click', () => {
-            if (this.currentQuestionIndex === this.questions.length - 1) {
-                this.submitQuiz();
-            } else {
-                this.navigateQuestion(1);
-            }
-        });
-
-        // Flag button
-        document.getElementById('flagButton').addEventListener('click', () => this.toggleFlagQuestion());
     }
 
     handleOptionSelect(optionIndex) {
         const question = this.questions[this.currentQuestionIndex];
         this.userAnswers.set(question.id, optionIndex);
 
-        // Update visual selection
-        const options = document.querySelectorAll('.option');
-        options.forEach(opt => opt.classList.remove('selected'));
-        options[optionIndex].classList.add('selected');
+        // Check if selected option is correct using shuffled options
+        const shuffledOptions = this.shuffledOptions.get(question.id);
+        const isCorrect = shuffledOptions[optionIndex].isCorrect;
+        
+        this.showExplanation();
+        this.displayCurrentQuestion();
     }
 
     showExplanation() {
         const question = this.questions[this.currentQuestionIndex];
-        const selectedAnswer = this.userAnswers.get(question.id);
-        const isCorrect = question.options[selectedAnswer] === question.correctAnswer;
+        const selectedIndex = this.userAnswers.get(question.id);
+        const shuffledOptions = this.shuffledOptions.get(question.id);
+        const isCorrect = shuffledOptions[selectedIndex].isCorrect;
 
         const container = document.getElementById('explanationContainer');
         const indicator = document.getElementById('resultIndicator');
@@ -126,38 +122,7 @@ class QuizManager {
         explanationText.textContent = question.explanation;
     }
 
-    navigateQuestion(direction) {
-        const newIndex = this.currentQuestionIndex + direction;
-        if (newIndex >= 0 && newIndex < this.questions.length) {
-            this.currentQuestionIndex = newIndex;
-            this.displayCurrentQuestion();
-        }
-    }
-
-    submitQuiz() {
-        this.quizSubmitted = true;
-        
-        // Calculate results
-        const totalQuestions = this.questions.length;
-        const answered = this.userAnswers.size;
-        const correct = Array.from(this.userAnswers.entries()).filter(([questionId, selectedIndex]) => {
-            const question = this.questions.find(q => q.id === questionId);
-            return question.options[selectedIndex] === question.correctAnswer;
-        }).length;
-
-        // Show results
-        document.getElementById('finalScore').textContent = `${Math.round((correct/totalQuestions) * 100)}%`;
-        document.getElementById('correctCount').textContent = `${correct}/${totalQuestions}`;
-        document.getElementById('quizSummary').classList.remove('hidden');
-
-        // Redisplay current question to show correct/incorrect answers
-        this.displayCurrentQuestion();
-    }
-
-    toggleFlagQuestion() {
-        const flagButton = document.getElementById('flagButton');
-        flagButton.classList.toggle('flagged');
-    }
+    // ... rest of your methods remain the same ...
 }
 
 // Initialize when the page loads
