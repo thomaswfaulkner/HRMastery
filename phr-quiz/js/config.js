@@ -2,31 +2,43 @@ export const domainData = {
     business: {
         title: 'Business Management',
         description: 'Strategic planning, HR metrics, change management, and organizational development.',
-        totalQuestions: 50
+        totalQuestions: 28,  // 14% of question bank
+        weight: 14
     },
-    talent: {
-        title: 'Talent Planning & Acquisition',
-        description: 'Workforce planning, recruitment, selection, and employee retention strategies.',
-        totalQuestions: 50
+    workforce: {
+        title: 'Workforce Planning and Talent Acquisition',
+        description: 'Recruiting, selection, onboarding, and workforce planning strategies.',
+        totalQuestions: 28,  // 14% of question bank
+        weight: 14
     },
     learning: {
-        title: 'Learning & Development',
-        description: 'Employee development, performance management, and organizational effectiveness.',
-        totalQuestions: 50
+        title: 'Learning and Development',
+        description: 'Training, development, and performance management.',
+        totalQuestions: 20,  // 10% of question bank
+        weight: 10
     },
-    compensation: {
+    rewards: {
         title: 'Total Rewards',
-        description: 'Compensation, benefits, wellness programs, and reward strategies.',
-        totalQuestions: 50
+        description: 'Compensation, benefits, and reward strategies.',
+        totalQuestions: 30,  // 15% of question bank
+        weight: 15
+    },
+    engagement: {
+        title: 'Employee Engagement',
+        description: 'Employee relations, engagement, and workplace culture.',
+        totalQuestions: 34,  // 17% of question bank
+        weight: 17
     },
     relations: {
-        title: 'Employee Relations',
-        description: 'Risk management, employee engagement, and workplace safety.',
-        totalQuestions: 50
+        title: 'Employee and Labor Relations',
+        description: 'Labor relations, compliance, and employee relations.',
+        totalQuestions: 40,  // 20% of question bank
+        weight: 20
     },
-    compliance: {
-        title: 'Labor Relations & Compliance',
-        description: 'Employment law, labor relations, and regulatory compliance.',
-        totalQuestions: 50
+    information: {
+        title: 'HR Information Management',
+        description: 'HR metrics, analytics, and information systems.',
+        totalQuestions: 20,  // 10% of question bank
+        weight: 10
     }
 };
