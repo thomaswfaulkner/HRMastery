@@ -1,8 +1,6 @@
 // learning.js
 const questions = [
     {
-        [
-    {
         id: "LND_001",
         text: "A multinational firm sees inconsistent skill uptake after a global training rollout. What should HR prioritize to fix this?",
         options: [
