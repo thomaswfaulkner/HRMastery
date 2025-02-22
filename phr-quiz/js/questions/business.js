@@ -1,21 +1,14 @@
-// business.js (example question bank file)
+// Example question structure in any domain file (e.g., business.js)
 const questions = [
     {
-        id: "bus_001",  // Unique ID format: domain_questionNumber
+        id: "BUS_001",  // Domain prefixes: BUS, WFP, LND, REW, ENG, ELR, HIM
         text: "Question text here",
-        options: [
-            "Option A",
-            "Option B",
-            "Option C",
-            "Option D"
-        ],
-        correctAnswer: 0,  // Index of correct option
+        options: ["A", "B", "C", "D"],
+        correctAnswer: 0,
         explanation: "Explanation text here",
-        references: "Optional reference text",
         domain: "business",
-        topic: "Strategic Planning"  // Sub-topic within domain
-    },
-    // More questions...
+        functionalArea: "Business Management",
+        topic: "Strategic Planning",
+        weight: 14  // Functional area weight
+    }
 ];
-
-export default questions;
