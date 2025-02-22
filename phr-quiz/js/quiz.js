@@ -73,10 +73,12 @@ class QuizManager {
         
         document.getElementById('questionText').textContent = question.text;
         
-        // Update question counter
-        document.getElementById('currentQuestion').textContent = this.currentQuestionIndex + 1;
-        document.getElementById('totalQuestions').textContent = this.questions.length;
-        
+// Update all question counters
+    const currentNum = this.currentQuestionIndex + 1;
+    document.getElementById('currentQuestion').textContent = currentNum;
+    document.getElementById('totalQuestions').textContent = this.questions.length;
+    document.getElementById('questionNumber').textContent = `Question ${currentNum}`;
+    
         // Display shuffled options
         const optionsContainer = document.getElementById('optionsContainer');
         optionsContainer.innerHTML = '';
