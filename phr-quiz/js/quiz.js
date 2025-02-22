@@ -1,26 +1,17 @@
 // quiz.js
 class QuizManager {
     constructor() {
-        console.log('QuizManager starting');
         this.selectedDomain = localStorage.getItem('selectedDomain');
         this.currentQuestionIndex = 0;
         this.userAnswers = new Map();
-        console.log('Selected domain:', this.selectedDomain);
+        this.quizSubmitted = false;
         this.initializeQuiz();
     }
 
     async initializeQuiz() {
         try {
-            console.log('Loading questions for domain:', this.selectedDomain);
             const module = await import(`./questions/${this.selectedDomain}.js`);
-            console.log('Module loaded:', module);
-            
-            if (!module.default) {
-                throw new Error('No default export found in module');
-            }
-            
             this.questions = module.default;
-            console.log('Questions loaded:', this.questions);
             
             if (this.questions && this.questions.length > 0) {
                 this.displayCurrentQuestion();
@@ -45,10 +36,21 @@ class QuizManager {
         question.options.forEach((option, index) => {
             const div = document.createElement('div');
             div.className = 'option';
-            // Add selected class if this option was previously selected
-            if (this.userAnswers.get(question.id) === index) {
-                div.classList.add('selected');
+            
+            // Show selected answer if question was answered
+            if (this.userAnswers.has(question.id)) {
+                div.classList.add(this.userAnswers.get(question.id) === index ? 'selected' : '');
+                
+                // If quiz is submitted, show correct/incorrect
+                if (this.quizSubmitted) {
+                    if (option === question.correctAnswer) {
+                        div.classList.add('correct');
+                    } else if (this.userAnswers.get(question.id) === index) {
+                        div.classList.add('incorrect');
+                    }
+                }
             }
+            
             div.textContent = option;
             div.dataset.index = index;
             optionsContainer.appendChild(div);
@@ -61,23 +63,39 @@ class QuizManager {
         // Update navigation buttons
         document.getElementById('prevButton').disabled = this.currentQuestionIndex === 0;
         const nextButton = document.getElementById('nextButton');
-        nextButton.textContent = this.currentQuestionIndex === this.questions.length - 1 ? 'Finish' : 'Next';
+        nextButton.textContent = this.currentQuestionIndex === this.questions.length - 1 ? 'Submit Quiz' : 'Next';
 
-        // Hide explanation if showing
-        document.getElementById('explanationContainer').classList.add('hidden');
+        // Hide explanation until quiz is submitted
+        const explanationContainer = document.getElementById('explanationContainer');
+        if (!this.quizSubmitted) {
+            explanationContainer.classList.add('hidden');
+        } else {
+            explanationContainer.classList.remove('hidden');
+            this.showExplanation();
+        }
     }
 
     setupEventListeners() {
         // Option selection
         document.getElementById('optionsContainer').addEventListener('click', (e) => {
-            if (e.target.classList.contains('option')) {
-                this.handleOptionSelect(parseInt(e.target.dataset.index));
+            if (e.target.classList.contains('option') && !this.quizSubmitted) {
+                const questionId = this.questions[this.currentQuestionIndex].id;
+                // Only allow selection if question hasn't been answered
+                if (!this.userAnswers.has(questionId)) {
+                    this.handleOptionSelect(parseInt(e.target.dataset.index));
+                }
             }
         });
 
         // Navigation buttons
         document.getElementById('prevButton').addEventListener('click', () => this.navigateQuestion(-1));
-        document.getElementById('nextButton').addEventListener('click', () => this.navigateQuestion(1));
+        document.getElementById('nextButton').addEventListener('click', () => {
+            if (this.currentQuestionIndex === this.questions.length - 1) {
+                this.submitQuiz();
+            } else {
+                this.navigateQuestion(1);
+            }
+        });
 
         // Flag button
         document.getElementById('flagButton').addEventListener('click', () => this.toggleFlagQuestion());
@@ -91,14 +109,13 @@ class QuizManager {
         const options = document.querySelectorAll('.option');
         options.forEach(opt => opt.classList.remove('selected'));
         options[optionIndex].classList.add('selected');
-
-        // Show explanation
-        const isCorrect = question.options[optionIndex] === question.correctAnswer;
-        this.showExplanation(isCorrect);
     }
 
-    showExplanation(isCorrect) {
+    showExplanation() {
         const question = this.questions[this.currentQuestionIndex];
+        const selectedAnswer = this.userAnswers.get(question.id);
+        const isCorrect = question.options[selectedAnswer] === question.correctAnswer;
+
         const container = document.getElementById('explanationContainer');
         const indicator = document.getElementById('resultIndicator');
         const explanationText = document.getElementById('explanationText');
@@ -114,17 +131,13 @@ class QuizManager {
         if (newIndex >= 0 && newIndex < this.questions.length) {
             this.currentQuestionIndex = newIndex;
             this.displayCurrentQuestion();
-        } else if (newIndex === this.questions.length) {
-            this.showQuizSummary();
         }
     }
 
-    toggleFlagQuestion() {
-        const flagButton = document.getElementById('flagButton');
-        flagButton.classList.toggle('flagged');
-    }
-
-    showQuizSummary() {
+    submitQuiz() {
+        this.quizSubmitted = true;
+        
+        // Calculate results
         const totalQuestions = this.questions.length;
         const answered = this.userAnswers.size;
         const correct = Array.from(this.userAnswers.entries()).filter(([questionId, selectedIndex]) => {
@@ -132,14 +145,22 @@ class QuizManager {
             return question.options[selectedIndex] === question.correctAnswer;
         }).length;
 
+        // Show results
         document.getElementById('finalScore').textContent = `${Math.round((correct/totalQuestions) * 100)}%`;
         document.getElementById('correctCount').textContent = `${correct}/${totalQuestions}`;
         document.getElementById('quizSummary').classList.remove('hidden');
+
+        // Redisplay current question to show correct/incorrect answers
+        this.displayCurrentQuestion();
+    }
+
+    toggleFlagQuestion() {
+        const flagButton = document.getElementById('flagButton');
+        flagButton.classList.toggle('flagged');
     }
 }
 
 // Initialize when the page loads
 document.addEventListener('DOMContentLoaded', () => {
-    console.log('DOM loaded - creating QuizManager');
     window.quizManager = new QuizManager();
 });
