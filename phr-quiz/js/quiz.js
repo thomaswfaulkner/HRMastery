@@ -1,3 +1,4 @@
+// quiz.js
 import { domainData } from './config.js';
 import ProgressTracker from './progress.js';
 
@@ -12,96 +13,62 @@ class QuizManager {
         this.timer = 0;
         this.timerInterval = null;
         
+        // Initialize immediately
         this.initializeQuiz();
     }
 
     async initializeQuiz() {
         try {
-            // Load questions for the selected domain
             await this.loadQuestions();
-            
-            // Set up the UI
             this.updateDomainTitle();
             this.startTimer();
             this.displayCurrentQuestion();
             this.setupEventListeners();
-            
         } catch (error) {
             console.error('Error initializing quiz:', error);
-            alert('Error loading quiz. Please try again.');
+            this.handleError('Failed to initialize quiz. Please try again.');
         }
     }
 
-// Inside QuizManager class
-async loadQuestions() {
-    try {
-        // Map old URLs to new ones if needed
-        const domainMap = {
-            // Only needed if we're supporting old URLs
-            'talent': 'workforce',
-            'compensation': 'rewards'
-        };
-        
-        // Get the correct domain name
-        const domain = domainMap[this.selectedDomain] || this.selectedDomain;
-        
-        // Dynamically import the question bank
-        const questionBank = await import(`./questions/${domain}.js`);
-        
-        // Get questions and shuffle them
-        this.questions = this.shuffleQuestions(questionBank.default);
-        
-        // Update total questions count in UI
-        document.getElementById('totalQuestions').textContent = this.questions.length;
-    } catch (error) {
-        console.error('Error loading questions:', error);
-        throw error;
-    }
-}
-
-// Add a method to shuffle questions
-class QuizManager {
-    // ... other methods ...
-
-    shuffleOptions(question) {
-        // Create array of option objects that include the original index
-        const optionsWithIndex = question.options.map((text, index) => ({
-            text,
-            isCorrect: text === question.correctAnswer
-        }));
-
-        // Shuffle the options
-        for (let i = optionsWithIndex.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [optionsWithIndex[i], optionsWithIndex[j]] = [optionsWithIndex[j], optionsWithIndex[i]];
-        }
-
-        // Update the question with shuffled options and new correct index
-        const shuffledQuestion = { ...question };
-        shuffledQuestion.options = optionsWithIndex.map(opt => opt.text);
-        shuffledQuestion.correctAnswer = shuffledQuestion.options.findIndex(opt => opt === question.correctAnswer);
-
-        return shuffledQuestion;
+    handleError(message) {
+        // You could create a better error UI here
+        alert(message);
+        window.location.href = './index.html';
     }
 
     async loadQuestions() {
         try {
-            // Load questions from file
-            const questionBank = await import(`./questions/${this.selectedDomain}.js`);
+            // Import the question bank for the selected domain
+            const module = await import(`./questions/${this.selectedDomain}.js`);
+            this.questions = this.shuffleQuestions(module.default);
             
-            // Shuffle options for each question
-            this.questions = questionBank.default.map(q => this.shuffleOptions(q));
-            
+            if (!this.questions || this.questions.length === 0) {
+                throw new Error('No questions found for this domain');
+            }
+
             document.getElementById('totalQuestions').textContent = this.questions.length;
         } catch (error) {
             console.error('Error loading questions:', error);
             throw error;
         }
     }
-}
+
+    shuffleQuestions(questions) {
+        // Create a copy of the questions array
+        const shuffled = [...questions];
+        // Fisher-Yates shuffle algorithm
+        for (let i = shuffled.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+        }
+        return shuffled;
+    }
+
     updateDomainTitle() {
-        const title = domainData[this.selectedDomain].title;
-        document.getElementById('domainTitle').textContent = title;
+        const domainInfo = domainData[this.selectedDomain];
+        if (domainInfo) {
+            document.getElementById('domainTitle').textContent = domainInfo.title;
+        }
     }
 
     startTimer() {
@@ -114,15 +81,15 @@ class QuizManager {
     updateTimerDisplay() {
         const minutes = Math.floor(this.timer / 60);
         const seconds = this.timer % 60;
-        const display = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
-        document.getElementById('timeSpent').textContent = display;
+        document.getElementById('timeSpent').textContent = 
+            `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
     }
 
     displayCurrentQuestion() {
         const question = this.questions[this.currentQuestionIndex];
-        const userAnswer = this.userAnswers.get(question.id);
-        
-        // Update question number
+        if (!question) return;
+
+        // Update question number display
         document.getElementById('currentQuestion').textContent = this.currentQuestionIndex + 1;
         document.getElementById('questionNumber').textContent = `Question ${this.currentQuestionIndex + 1}`;
         
@@ -131,12 +98,12 @@ class QuizManager {
         
         // Create option elements
         const optionsContainer = document.getElementById('optionsContainer');
-        optionsContainer.innerHTML = '';
+        optionsContainer.innerHTML = ''; // Clear existing options
         
         question.options.forEach((option, index) => {
             const optionElement = document.createElement('div');
             optionElement.className = 'option';
-            if (userAnswer === index) {
+            if (this.userAnswers.has(question.id) && this.userAnswers.get(question.id) === index) {
                 optionElement.classList.add('selected');
             }
             optionElement.textContent = option;
@@ -144,7 +111,7 @@ class QuizManager {
             optionsContainer.appendChild(optionElement);
         });
 
-        // Update flag button
+        // Update flag button state
         const flagButton = document.getElementById('flagButton');
         flagButton.classList.toggle('flagged', this.flaggedQuestions.has(question.id));
 
@@ -158,7 +125,10 @@ class QuizManager {
         nextButton.textContent = this.currentQuestionIndex === this.questions.length - 1 ? 'Finish' : 'Next';
 
         // Hide explanation if shown
-        document.getElementById('explanationContainer').classList.add('hidden');
+        const explanationContainer = document.getElementById('explanationContainer');
+        if (explanationContainer) {
+            explanationContainer.classList.add('hidden');
+        }
     }
 
     setupEventListeners() {
@@ -175,10 +145,6 @@ class QuizManager {
 
         // Flag button
         document.getElementById('flagButton').addEventListener('click', () => this.toggleFlagQuestion());
-
-        // Quiz completion buttons
-        document.getElementById('reviewButton').addEventListener('click', () => this.reviewQuiz());
-        document.getElementById('finishButton').addEventListener('click', () => this.finishQuiz());
     }
 
     handleOptionSelect(optionIndex) {
@@ -191,13 +157,14 @@ class QuizManager {
         options[optionIndex].classList.add('selected');
 
         // Show explanation
-        this.showExplanation(optionIndex === question.correctAnswer);
+        const isCorrect = optionIndex === question.correctAnswer;
+        this.showExplanation(isCorrect);
 
         // Update progress
         this.progressTracker.updateQuestionProgress(
             this.selectedDomain,
             question.id,
-            optionIndex === question.correctAnswer
+            isCorrect
         );
     }
 
@@ -207,10 +174,10 @@ class QuizManager {
         const indicator = document.getElementById('resultIndicator');
         const explanationText = document.getElementById('explanationText');
 
+        container.classList.remove('hidden');
         indicator.textContent = isCorrect ? '✓ Correct!' : '✗ Incorrect';
         indicator.className = `result-indicator ${isCorrect ? 'correct' : 'incorrect'}`;
         explanationText.textContent = question.explanation;
-        container.classList.remove('hidden');
     }
 
     navigateQuestion(direction) {
@@ -230,50 +197,7 @@ class QuizManager {
         } else {
             this.flaggedQuestions.add(questionId);
         }
-        
         document.getElementById('flagButton').classList.toggle('flagged');
-    }
-
-    showQuizSummary() {
-        clearInterval(this.timerInterval);
-        
-        // Calculate results
-        const totalQuestions = this.questions.length;
-        const answeredQuestions = this.userAnswers.size;
-        const correctAnswers = Array.from(this.userAnswers.entries())
-            .filter(([questionId, answer]) => {
-                const question = this.questions.find(q => q.id === questionId);
-                return question.correctAnswer === answer;
-            }).length;
-        
-        const score = Math.round((correctAnswers / totalQuestions) * 100);
-
-        // Update summary UI
-        document.getElementById('finalScore').textContent = `${score}%`;
-        document.getElementById('timeTaken').textContent = this.formatTime(this.timer);
-        document.getElementById('correctCount').textContent = `${correctAnswers}/${totalQuestions}`;
-        
-        // Show summary modal
-        document.getElementById('quizSummary').classList.remove('hidden');
-
-        // Update progress tracker
-        this.progressTracker.updateTimeSpent(this.selectedDomain, this.timer);
-    }
-
-    formatTime(seconds) {
-        const minutes = Math.floor(seconds / 60);
-        const remainingSeconds = seconds % 60;
-        return `${String(minutes).padStart(2, '0')}:${String(remainingSeconds).padStart(2, '0')}`;
-    }
-
-    reviewQuiz() {
-        document.getElementById('quizSummary').classList.add('hidden');
-        this.currentQuestionIndex = 0;
-        this.displayCurrentQuestion();
-    }
-
-    finishQuiz() {
-        window.location.href = './index.html';
     }
 }
 
@@ -281,3 +205,5 @@ class QuizManager {
 document.addEventListener('DOMContentLoaded', () => {
     new QuizManager();
 });
+
+export default QuizManager;
