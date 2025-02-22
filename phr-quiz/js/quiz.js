@@ -32,11 +32,21 @@ class QuizManager {
         }
     }
 
-    // Inside QuizManager class
+// Inside QuizManager class
 async loadQuestions() {
     try {
-        // Dynamically import the question bank based on selected domain
-        const questionBank = await import(`./questions/${this.selectedDomain}.js`);
+        // Map old URLs to new ones if needed
+        const domainMap = {
+            // Only needed if we're supporting old URLs
+            'talent': 'workforce',
+            'compensation': 'rewards'
+        };
+        
+        // Get the correct domain name
+        const domain = domainMap[this.selectedDomain] || this.selectedDomain;
+        
+        // Dynamically import the question bank
+        const questionBank = await import(`./questions/${domain}.js`);
         
         // Get questions and shuffle them
         this.questions = this.shuffleQuestions(questionBank.default);
