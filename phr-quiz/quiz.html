@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PHR Quiz</title>
+    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href="./css/quiz.css">
+</head>
+<body>
+    <div class="quiz-container">
+        <header class="quiz-header">
+            <div class="quiz-controls">
+                <a href="./index.html" class="back-button">← Back to Domains</a>
+                <div class="domain-info">
+                    <h1 id="domainTitle">Loading...</h1>
+                    <div class="quiz-stats">
+                        <span class="timer">Time: <span id="timeSpent">00:00</span></span>
+                        <span class="question-count">Question <span id="currentQuestion">0</span> of <span id="totalQuestions">0</span></span>
+                    </div>
+                </div>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressBar"></div>
+            </div>
+        </header>
+
+        <main class="quiz-content">
+            <div class="question-container">
+                <div class="question-header">
+                    <span class="question-number" id="questionNumber">Question 1</span>
+                    <button class="flag-button" id="flagButton">
+                        <span class="flag-icon">⚑</span> Flag for Review
+                    </button>
+                </div>
+                
+                <div class="question-text" id="questionText">
+                    Loading question...
+                </div>
+
+                <div class="options-container" id="optionsContainer">
+                    <!-- Options will be inserted here -->
+                </div>
+            </div>
+
+            <div class="explanation-container hidden" id="explanationContainer">
+                <div class="explanation-header">
+                    <h3>Explanation</h3>
+                    <div class="result-indicator" id="resultIndicator"></div>
+                </div>
+                <div class="explanation-content" id="explanationText"></div>
+            </div>
+        </main>
+
+        <footer class="quiz-footer">
+            <div class="quiz-actions">
+                <button class="quiz-button secondary" id="prevButton">Previous</button>
+                <button class="quiz-button primary" id="nextButton">Next</button>
+            </div>
+        </footer>
+    </div>
+
+    <div class="quiz-summary hidden" id="quizSummary">
+        <div class="summary-content">
+            <h2>Quiz Complete!</h2>
+            <div class="summary-stats">
+                <div class="stat-item">
+                    <span class="stat-label">Score</span>
+                    <span class="stat-value" id="finalScore">0%</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Time Taken</span>
+                    <span class="stat-value" id="timeTaken">00:00</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Questions Correct</span>
+                    <span class="stat-value" id="correctCount">0/0</span>
+                </div>
+            </div>
+            <div class="summary-actions">
+                <button class="quiz-button secondary" id="reviewButton">Review Answers</button>
+                <button class="quiz-button primary" id="finishButton">Return to Domains</button>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="./js/quiz.js"></script>
+</body>
+</html>
