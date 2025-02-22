@@ -60,23 +60,45 @@ async loadQuestions() {
 }
 
 // Add a method to shuffle questions
-shuffleQuestions(questions) {
-    // Create a copy of the questions array
-    const shuffled = [...questions];
-    for (let i = shuffled.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
-    }
-    return shuffled;
-}
+class QuizManager {
+    // ... other methods ...
 
+    shuffleOptions(question) {
+        // Create array of option objects that include the original index
+        const optionsWithIndex = question.options.map((text, index) => ({
+            text,
+            isCorrect: text === question.correctAnswer
+        }));
+
+        // Shuffle the options
+        for (let i = optionsWithIndex.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [optionsWithIndex[i], optionsWithIndex[j]] = [optionsWithIndex[j], optionsWithIndex[i]];
+        }
+
+        // Update the question with shuffled options and new correct index
+        const shuffledQuestion = { ...question };
+        shuffledQuestion.options = optionsWithIndex.map(opt => opt.text);
+        shuffledQuestion.correctAnswer = shuffledQuestion.options.findIndex(opt => opt === question.correctAnswer);
+
+        return shuffledQuestion;
+    }
+
+    async loadQuestions() {
+        try {
+            // Load questions from file
+            const questionBank = await import(`./questions/${this.selectedDomain}.js`);
+            
+            // Shuffle options for each question
+            this.questions = questionBank.default.map(q => this.shuffleOptions(q));
+            
             document.getElementById('totalQuestions').textContent = this.questions.length;
         } catch (error) {
             console.error('Error loading questions:', error);
             throw error;
         }
     }
-
+}
     updateDomainTitle() {
         const title = domainData[this.selectedDomain].title;
         document.getElementById('domainTitle').textContent = title;
