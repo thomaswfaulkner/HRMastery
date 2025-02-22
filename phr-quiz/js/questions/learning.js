@@ -95,7 +95,7 @@ const questions = [
         ],
         correctAnswer: "Measure training’s impact by analyzing team performance trends over time",
         explanation: "Analyzing team performance trends (Kirkpatrick Level 4) assesses systemic value on organizational outcomes. Feedback captures perception tactically, module review assumes gaps, and one-time assessments miss longitudinal impact."
-    }
+    },
     {
         id: "LND_130",
         text: "A biotech firm’s career pathing program aims to transition lab technicians to research roles, but after a year, only 25% pursue advanced training due to perceived irrelevance. HR must enhance uptake. What’s the best approach?",
@@ -179,7 +179,7 @@ const questions = [
         ],
         correctAnswer: "Apply Rogers’ Diffusion of Innovations to embed creative adoption",
         explanation: "Rogers’ Diffusion model drives systemic innovation adoption through stages and influencers, aligning with organizational goals. Andragogy risks inconsistency, Level 4 analyzes partially, and Lewin shifts mindsets tactically without embedding practice."
-    }
+    },
     {
         id: "LND_137",
         text: "A manufacturing firm’s succession planning for plant managers reveals a 40% turnover rate among high-potential candidates. Management seeks HR’s input to stabilize the pipeline. What’s the best data-driven contribution?",
@@ -263,7 +263,8 @@ const questions = [
         ],
         correctAnswer: "Map skills assessment progress to plateau predictors",
         explanation: "Mapping progress to predictors identifies systemic barriers to advancement, aligning with Talent Development Models for proactive succession. Trends inform tactically, turnover reacts partially, and benchmarks miss plateau-specific insight."
-    }
+    },
+    {
         id: "LND_144",
         text: "A logistics firm’s succession planning for operations managers reveals a 35% attrition rate among high-potential trainees after skills development investments. Management seeks HR’s data-driven insight. What’s the best contribution?",
         options: [
@@ -286,7 +287,7 @@ const questions = [
         ],
         correctAnswer: "Integrate Adams’ Equity Theory to correlate pay fairness with promotion uptake",
         explanation: "Adams’ Equity Theory correlates fairness with behavior, offering systemic insight into promotion acceptance for succession planning. Ratings inform tactically, turnover reports react partially, and skills assessments shift focus to development."
-    }
+    },
     {
         id: "LND_146",
         text: "A retail chain’s succession planning for store managers uncovers inconsistent readiness despite robust skills training. HR integrates performance and attrition data. What’s the best technical contribution?",
@@ -310,7 +311,7 @@ const questions = [
         ],
         correctAnswer: "Apply Vroom’s Expectancy Theory to link support gaps to turnover",
         explanation: "Vroom’s Expectancy Theory ties support to motivation and retention, offering systemic insight for succession stability. Trends inform tactically, resource reports shift focus partially, and Level 4 analyzes outcomes without addressing causes."
-    }
+    },
     {
         id: "LND_148",
         text: "A financial firm’s succession planning for wealth advisors reveals a bottleneck as top performers plateau despite skills investments. HR integrates skills assessments and performance data. What’s the best contribution?",
@@ -346,7 +347,7 @@ const questions = [
         ],
         correctAnswer: "Use Markov Analysis to forecast readiness and attrition probabilities",
         explanation: "Markov Analysis forecasts readiness and attrition, providing systemic, predictive data for strategic planning. Scores describe tactically, Level 4 analyzes outcomes partially, and resource reports miss turnover prediction."
-    }
+    },
     {
         id: "LND_151",
         text: "A financial firm’s compliance training program aims to eliminate regulatory fines within a year, but recent audits reveal persistent documentation errors despite high participation. HR must refine administration. What’s the best approach?",
@@ -358,7 +359,7 @@ const questions = [
         ],
         correctAnswer: "Implement ADDIE to redesign training with error-focused simulations",
         explanation: "ADDIE’s systematic redesign targets errors with simulations, ensuring systemic compliance aligned with organizational goals. Frequency reinforces tactically, manuals aid partially, and Level 1 surveys assess perception without addressing behavior."
-    }
+    },
     {
         id: "LND_152",
         text: "A manufacturing plant’s safety training program seeks to reduce incidents by 20% in six months, but workers bypass protocols under time pressure. HR must enhance administration. What’s the most effective strategy?",
@@ -370,7 +371,7 @@ const questions = [
         ],
         correctAnswer: "Integrate Knowles’ Andragogy with real-time protocol practice",
         explanation: "Knowles’ Andragogy embeds relevant practice into work, driving systemic safety behavior change. Refreshers educate tactically, posters remind partially, and tracking monitors without addressing time-pressure barriers."
-    }
+    },
     {
         id: "LND_153",
         text: "A tech startup’s benefits education program aims to boost wellness plan enrollment by 30%, but employees skip it due to complexity. HR must adjust administration. What’s the best solution?",
@@ -382,7 +383,7 @@ const questions = [
         ],
         correctAnswer: "Apply Gagné’s Nine Events to simplify and sequence enrollment training",
         explanation: "Gagné’s Nine Events structure learning for clarity and action, systemically boosting enrollment through comprehension. Q&As clarify tactically, emails inform partially, and monitoring tracks without simplifying complexity."
-    }
+    },
     {
         id: "LND_154",
         text: "A bank’s HR systems training for a new security protocol targets zero breaches in a quarter, but tellers revert to old habits under workload stress. HR must refine administration. What’s the most strategic approach?",
@@ -394,7 +395,7 @@ const questions = [
         ],
         correctAnswer: "Integrate Kolb’s Experiential Learning with stress-tested simulations",
         explanation: "Kolb’s Experiential Learning builds habits through practice under stress, ensuring systemic security adherence. Refreshers reinforce tactically, cheat sheets aid partially, and Level 3 assesses without embedding behavior."
-    }
+    },
     {
         id: "LND_155",
         text: "A retail chain’s inclusivity initiative seeks to reduce bias complaints by 25% in a year, but post-training, microaggressions persist in customer interactions. HR must enhance administration. What’s the best tactic?",
@@ -430,7 +431,7 @@ const questions = [
         ],
         correctAnswer: "Apply ADDIE to redesign with time-pressured practice modules",
         explanation: "ADDIE redesigns training with contextual practice, ensuring systemic error reduction aligned with usage goals. Refreshers reinforce tactically, guides assist partially, and monitoring tracks without addressing time constraints."
-    }
+    },
     {
         id: "LND_158",
         text: "A pharmaceutical firm’s compliance training program aims to achieve 100% adherence to FDA regulations within six months, but staff struggle with complex procedural updates despite high completion rates. HR must refine administration. What’s the best approach?",
