@@ -19,13 +19,22 @@ jobs:
           node-version: 18
 
       - name: Install dependencies
-        run: npm install
+        run: |
+          cd process_mapper
+          npm install
 
       - name: Build project
-        run: npm run build
+        run: |
+          cd process_mapper
+          npm run build
+
+      - name: Move build to docs
+        run: |
+          rm -rf docs
+          mv process_mapper/docs docs
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages
-          folder: dist
+          folder: docs
