@@ -3,8 +3,8 @@ import react from "@vitejs/plugin-react";
 
 export default defineConfig({
   plugins: [react()],
-  base: "/HRMastery/process-mapper/", // Set your GitHub repo path
+  base: "/HRMastery/process_mapper/",  // ✅ Ensure this matches the repo path exactly
   build: {
-    outDir: "dist",
+    outDir: "docs",  // ✅ Output should go to /docs so GitHub Pages can serve it
   },
 });
