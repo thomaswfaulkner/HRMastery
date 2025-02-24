@@ -135,6 +135,27 @@ body {
     transition: width 0.3s ease;
 }
 
+#resetProgressButton {
+    background-color: #dc3545; /* Red color for emphasis */
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+}
+
+#resetProgressButton:hover {
+    background-color: #c82333; /* Slightly darker red on hover */
+}
+
+#resetProgressButton:active {
+    background-color: #a71d2a; /* Even darker red on click */
+}
+
+
 @media (max-width: 640px) {
     .domain-grid {
         grid-template-columns: 1fr;
