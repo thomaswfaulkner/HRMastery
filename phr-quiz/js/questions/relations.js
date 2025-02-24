@@ -92,7 +92,7 @@ const questions = [
             "Encouraging employees to participate in decision-making",
             "Ignoring a colleague’s emails and talking over them in meetings",
             "Providing positive recognition for achievements"
-    ],
+        ],
         correctAnswer: "Ignoring a colleague’s emails and talking over them in meetings",
         explanation: "Ignoring a colleague or speaking over them demonstrates a lack of respect and contributes to workplace incivility."
     },
@@ -224,7 +224,7 @@ const questions = [
             "Immediately provide the workstation without discussion",
             "Support the manager’s denial since accommodations are optional",
             "Ignore the request unless legal action is threatened"
-    ],
+        ],
         correctAnswer: "Initiate an interactive process to determine if the accommodation is reasonable",
         explanation: "The ADA requires an interactive process between the employer and employee to determine reasonable accommodations."
     },
@@ -780,7 +780,6 @@ const questions = [
         correctAnswer: "Employers should maintain strict no-use policies and enforce zero-tolerance rules",
         explanation: "Employees in safety-sensitive positions (e.g., machinery operators, drivers) should not use substances that impair performance, even if legal."
     },
-    [
     {
         id: "ELR_050",
         text: "Which of the following is not a recommended step for preventing workplace violence?",
@@ -949,7 +948,6 @@ const questions = [
         correctAnswer: "Any act or threat of physical violence, harassment, intimidation, or disruptive behavior at work",
         explanation: "Workplace violence includes threats, harassment, physical attacks, and intimidation affecting employees, clients, or visitors."
     },
-    [
     {
         id: "DEI_010",
         text: "How can HR best ensure that DEI initiatives remain effective over time?",
