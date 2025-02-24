@@ -1,9 +1,6 @@
 // progress.js
 import { domainData } from './config.js';
 
-// Clear any potentially corrupted progress data
-localStorage.removeItem('phrQuizProgress');
-
 class ProgressTracker {
     constructor() {
         this.initializeProgress();
@@ -128,6 +125,17 @@ class ProgressTracker {
 document.addEventListener('DOMContentLoaded', () => {
     window.progressTracker = new ProgressTracker();
     console.log('ProgressTracker initialized:', window.progressTracker);
+}
+document.getElementById('resetProgressButton').addEventListener('click', () => {
+  if (confirm('Are you sure you want to reset your progress?')) {
+    localStorage.removeItem('phrQuizProgress');
+    // Optionally reinitialize the progress data:
+    // progressTracker.initializeProgress();
+    // Or reload the page to reflect the changes:
+    location.reload();
+  }
 });
+
+);
 
 export default ProgressTracker;
