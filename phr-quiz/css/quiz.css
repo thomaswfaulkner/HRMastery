@@ -196,12 +196,35 @@
 }
 
 .quiz-button.secondary {
-    background-color: var(--background-color);
-    color: var(--text-color);
+    background-color: #e0e0e0;
+    color: #333;
+    border: 1px solid #ccc;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
 }
 
 .quiz-button.secondary:hover {
-    background-color: #e5e7eb;
+    background-color: #d0d0d0;
+}
+
+#jumpToSelect {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld0JveD0iMCAwIDIwIDIwIj48cGF0aCBkPSJNMTAgMTRsLTUtNWMtLjMtLjMtLjMtLjggMC0xLjEuMy0uMy43LS4zIDEgMCA1IDUgNSAxMCAxMCAxLjUtMS41IDEuNS00IDAtNS01LTUtNS0xMC0xMC0xLjUtMS41LTEuNS00IDAtNS01LTUtNS0xMCAxMCAxLjUgMS41IDEuNSA0IDAgNSAxMCAxMCAiLz48L3N2Zz4=') no-repeat right 10px center;
+    background-color: #e0e0e0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px 30px 10px 10px;
+    font-size: 14px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+#jumpToSelect:hover {
+    background-color: #d0d0d0;
 }
 
 .quiz-button:disabled {
