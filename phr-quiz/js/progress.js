@@ -73,7 +73,9 @@ class ProgressTracker {
             completedQuestions: [],
             correctAnswers: [],
             lastAttempt: null,
-            timeSpent: 0
+            timeSpent: 0,
+            userAnswers: {},
+            currentQuestionIndex: 0        
         };
     }
 
