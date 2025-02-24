@@ -19,10 +19,10 @@ class ProgressTracker {
             const initialProgress = {};
             Object.keys(domainData).forEach(domain => {
                 initialProgress[domain] = {
-                    completedQuestions: [],
-                    correctAnswers: [],
-                    lastAttempt: null,
-                    timeSpent: 0
+                    completedQuestions: [], // Array of question IDs completed
+                    correctAnswers: [],    // Array of question IDs answered correctly
+                    lastAttempt: null,     // Timestamp of last attempt
+                    timeSpent: 0          // Total time spent in seconds
                 };
             });
             localStorage.setItem('phrQuizProgress', JSON.stringify(initialProgress));
@@ -51,7 +51,7 @@ class ProgressTracker {
         const domainProgress = this.getDomainProgress(domain);
         const totalQuestions = domainData[domain].totalQuestions;
         const completedCount = domainProgress.completedQuestions.length;
-        return Math.round((completedCount / totalQuestions) * 100) || 0;
+        return totalQuestions > 0 ? Math.round((completedCount / totalQuestions) * 100) : 0;
     }
 
     // Create domain cards in the UI
@@ -92,6 +92,32 @@ class ProgressTracker {
     startQuiz(domain) {
         localStorage.setItem('selectedDomain', domain);
         window.location.href = './quiz.html';
+    }
+
+    // Update progress when a user completes or answers a question
+    updateProgress(domain, questionId, isCorrect, timeSpentIncrement = 0) {
+        const progress = this.getProgress();
+        const domainProgress = progress[domain] || this.getDomainProgress(domain);
+
+        // Track completed question if not already tracked
+        if (!domainProgress.completedQuestions.includes(questionId)) {
+            domainProgress.completedQuestions.push(questionId);
+        }
+
+        // Track correct answer if applicable
+        if (isCorrect && !domainProgress.correctAnswers.includes(questionId)) {
+            domainProgress.correctAnswers.push(questionId);
+        }
+
+        // Update time spent
+        domainProgress.timeSpent += timeSpentIncrement;
+
+        // Update last attempt timestamp
+        domainProgress.lastAttempt = new Date().toISOString();
+
+        // Save updated progress
+        localStorage.setItem('phrQuizProgress', JSON.stringify(progress));
+        this.createDomainCards(); // Refresh UI to show updated progress
     }
 }
 
