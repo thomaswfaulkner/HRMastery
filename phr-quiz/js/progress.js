@@ -19,7 +19,7 @@ class ProgressTracker {
             const initialProgress = {};
             Object.keys(domainData).forEach(domain => {
                 initialProgress[domain] = {
-                    completedQuestions: [], // Array of question IDs completed
+                    completedQuestions: [], // Array of question IDs (strings like "BUS_001")
                     correctAnswers: [],    // Array of question IDs answered correctly
                     lastAttempt: null,     // Timestamp of last attempt
                     timeSpent: 0          // Total time spent in seconds
@@ -66,6 +66,7 @@ class ProgressTracker {
 
         Object.entries(domainData).forEach(([key, data]) => {
             const percentage = this.calculateDomainProgress(key);
+            console.log(`Creating card for ${key} with progress: ${percentage}%`);
             
             const card = document.createElement('div');
             card.className = 'domain-card';
@@ -96,6 +97,7 @@ class ProgressTracker {
 
     // Update progress when a user completes or answers a question
     updateProgress(domain, questionId, isCorrect, timeSpentIncrement = 0) {
+        console.log('Saving progress:', { domain, questionId, isCorrect, timeSpentIncrement });
         const progress = this.getProgress();
         const domainProgress = progress[domain] || this.getDomainProgress(domain);
 
@@ -117,6 +119,7 @@ class ProgressTracker {
 
         // Save updated progress
         localStorage.setItem('phrQuizProgress', JSON.stringify(progress));
+        console.log('Progress saved to localStorage:', JSON.stringify(progress));
         this.createDomainCards(); // Refresh UI to show updated progress
     }
 }
@@ -124,6 +127,7 @@ class ProgressTracker {
 // Initialize progress tracking when the page loads
 document.addEventListener('DOMContentLoaded', () => {
     window.progressTracker = new ProgressTracker();
+    console.log('ProgressTracker initialized:', window.progressTracker);
 });
 
 export default ProgressTracker;
