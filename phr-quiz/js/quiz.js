@@ -4,22 +4,24 @@ import { domainData } from './config.js';
 
 class QuizManager {
     constructor() {
-      this.selectedDomain = localStorage.getItem('selectedDomain');
-    
-      // Grab overall progress from localStorage
-      const allProgress = JSON.parse(localStorage.getItem('phrQuizProgress')) || {};
-      const domainProgress = allProgress[this.selectedDomain] || {};
-    
-      // Restore userAnswers (Map in memory, but saved as an object in localStorage)
-      this.userAnswers = new Map(Object.entries(domainProgress.userAnswers || {}));
+        this.selectedDomain = localStorage.getItem('selectedDomain');
 
-        // Restore currentQuestionIndex
-        this.currentQuestionIndex = domainProgress.currentQuestionIndex || 0;
+        // Grab overall progress from localStorage
+        const allProgress = JSON.parse(localStorage.getItem('phrQuizProgress')) || {};
+        const domainProgress = allProgress[this.selectedDomain] || {};
+
+        // Restore userAnswers (Map in memory, but saved as an object in localStorage)
+        this.userAnswers = new Map(Object.entries(domainProgress.userAnswers || {}));
+
+        // Restore currentQuestionIndex (if missing, default to 0)
+        this.currentQuestionIndex = domainProgress.currentQuestionIndex ?? 0;
+
         this.shuffledOptions = new Map(); // Store shuffled options for each question
         this.flaggedQuestions = new Set();
         this.timer = 0;
         this.timerInterval = null;
         this.progressTracker = window.progressTracker || new ProgressTracker(); // Ensure ProgressTracker is initialized
+
         this.initializeQuiz();
     }
 
@@ -30,11 +32,6 @@ class QuizManager {
             this.questions = module.default;
             
             if (this.questions && this.questions.length > 0) {
-                const expectedQuestions = domainData[this.selectedDomain].totalQuestions;
-                if (this.questions.length !== expectedQuestions) {
-                    console.warn(`Question count mismatch for ${this.selectedDomain}: expected ${expectedQuestions}, got ${this.questions.length}`);
-                }
-
                 // Shuffle options for all questions at start
                 this.questions.forEach(question => {
                     this.shuffledOptions.set(question.id, this.shuffleOptions(question));
@@ -84,34 +81,29 @@ class QuizManager {
 
     displayCurrentQuestion() {
         const question = this.questions[this.currentQuestionIndex];
+
+        // Ensure shuffledOptions exists for this question
+        if (!this.shuffledOptions.has(question.id)) {
+            this.shuffledOptions.set(question.id, this.shuffleOptions(question));
+        }
         const shuffledOptions = this.shuffledOptions.get(question.id);
         
         document.getElementById('questionText').textContent = question.text;
-        const currentNum = this.currentQuestionIndex + 1;
-        document.getElementById('currentQuestion').textContent = currentNum;
+        document.getElementById('currentQuestion').textContent = this.currentQuestionIndex + 1;
         document.getElementById('totalQuestions').textContent = this.questions.length;
-        document.getElementById('questionNumber').textContent = `Question ${currentNum}`;
-    
+        document.getElementById('questionNumber').textContent = `Question ${this.currentQuestionIndex + 1}`;
+
         const optionsContainer = document.getElementById('optionsContainer');
         optionsContainer.innerHTML = '';
-        
+
         shuffledOptions.forEach((option, index) => {
             const div = document.createElement('div');
             div.className = 'option';
             
-            if (this.userAnswers.has(question.id)) {
-                if (this.userAnswers.get(question.id) === index) {
-                    div.classList.add('selected');
-                    if (option === question.correctAnswer) {
-                        div.classList.add('correct');
-                    } else {
-                        div.classList.add('incorrect');
-                    }
-                } else if (option === question.correctAnswer) {
-                    div.classList.add('correct');
-                }
+            // Restore previous selection if user has already answered this question
+            if (this.userAnswers.has(question.id) && this.userAnswers.get(question.id) === index) {
+                div.classList.add('selected');
             }
-            
             div.textContent = option;
             div.dataset.index = index;
             optionsContainer.appendChild(div);
@@ -120,12 +112,9 @@ class QuizManager {
         const progress = ((this.currentQuestionIndex + 1) / this.questions.length) * 100;
         document.getElementById('progressBar').style.width = `${progress}%`;
 
-        const flagButton = document.getElementById('flagButton');
-        flagButton.classList.toggle('flagged', this.flaggedQuestions.has(question.id));
-
         document.getElementById('prevButton').disabled = this.currentQuestionIndex === 0;
-        const nextButton = document.getElementById('nextButton');
-        nextButton.textContent = this.currentQuestionIndex === this.questions.length - 1 ? 'Finish Quiz' : 'Next';
+        document.getElementById('nextButton').textContent =
+            this.currentQuestionIndex === this.questions.length - 1 ? 'Finish Quiz' : 'Next';
 
         const explanationContainer = document.getElementById('explanationContainer');
         if (this.userAnswers.has(question.id)) {
@@ -151,6 +140,7 @@ class QuizManager {
         document.getElementById('optionsContainer').addEventListener('click', (e) => {
             if (e.target.classList.contains('option')) {
                 const questionId = this.questions[this.currentQuestionIndex].id;
+                // Allow selection only if question hasn't been answered yet
                 if (!this.userAnswers.has(questionId)) {
                     this.handleOptionSelect(parseInt(e.target.dataset.index));
                 }
@@ -175,6 +165,7 @@ class QuizManager {
             const newIndex = parseInt(e.target.value);
             if (newIndex >= 0 && newIndex < this.questions.length) {
                 this.currentQuestionIndex = newIndex;
+                this.saveDomainState();
                 this.displayCurrentQuestion();
                 e.target.selectedIndex = 0; // Reset to "Jump To..." after jumping
             }
@@ -183,21 +174,16 @@ class QuizManager {
 
     handleOptionSelect(optionIndex) {
         const question = this.questions[this.currentQuestionIndex];
-        if (!this.userAnswers.has(question.id)) {
-            const shuffledOptions = this.shuffledOptions.get(question.id);
-            this.userAnswers.set(question.id, optionIndex);
-            const isCorrect = shuffledOptions[optionIndex] === question.correctAnswer;
-            console.log('Progress update attempt:', { domain: this.selectedDomain, questionId: question.id, isCorrect, timeSpent: this.timer });
-            this.showExplanation();
-            this.displayCurrentQuestion();
+        // Save the selected answer
+        this.userAnswers.set(question.id, optionIndex);
+        // Save updated progress
+        this.saveDomainState();
 
-            this.progressTracker.updateProgress(
-                this.selectedDomain,
-                question.id,
-                isCorrect,
-                this.timer
-            );
-        }
+        const isCorrect = this.shuffledOptions.get(question.id)[optionIndex] === question.correctAnswer;
+        console.log('Progress update attempt:', { domain: this.selectedDomain, questionId: question.id, isCorrect, timeSpent: this.timer });
+        this.progressTracker.updateProgress(this.selectedDomain, question.id, isCorrect, this.timer);
+
+        this.displayCurrentQuestion();
     }
 
     showExplanation() {
@@ -220,6 +206,8 @@ class QuizManager {
         const newIndex = this.currentQuestionIndex + direction;
         if (newIndex >= 0 && newIndex < this.questions.length) {
             this.currentQuestionIndex = newIndex;
+            // Save progress when navigating
+            this.saveDomainState();
             this.displayCurrentQuestion();
         }
     }
@@ -236,31 +224,16 @@ class QuizManager {
 
     finishQuiz() {
         clearInterval(this.timerInterval);
-        
-        const totalQuestions = this.questions.length;
+        // Optionally, update progress for all questions here
         Array.from(this.userAnswers.entries()).forEach(([questionId, selectedIndex]) => {
             const question = this.questions.find(q => q.id === questionId);
             const shuffledOptions = this.shuffledOptions.get(questionId);
             const isCorrect = shuffledOptions[selectedIndex] === question.correctAnswer;
             console.log('Final progress update for:', { domain: this.selectedDomain, questionId, isCorrect, timeSpent: this.timer });
-            this.progressTracker.updateProgress(
-                this.selectedDomain,
-                questionId,
-                isCorrect,
-                this.timer
-            );
+            this.progressTracker.updateProgress(this.selectedDomain, questionId, isCorrect, this.timer);
         });
-
-        const correctCount = Array.from(this.userAnswers.entries()).filter(([questionId, selectedIndex]) => {
-            const question = this.questions.find(q => q.id === questionId);
-            const shuffledOptions = this.shuffledOptions.get(questionId);
-            return shuffledOptions[selectedIndex] === question.correctAnswer;
-        }).length;
-
-        document.getElementById('finalScore').textContent = `${Math.round((correctCount / totalQuestions) * 100)}%`;
-        document.getElementById('timeTaken').textContent = this.formatTime(this.timer);
-        document.getElementById('correctCount').textContent = `${correctCount}/${totalQuestions}`;
-        document.getElementById('quizSummary').classList.remove('hidden');
+        // Redirect to index.html after finishing the quiz
+        window.location.href = './index.html';
     }
 
     formatTime(seconds) {
@@ -278,10 +251,22 @@ class QuizManager {
     returnToDomains() {
         window.location.href = './index.html';
     }
+
+    saveDomainState() {
+        const allProgress = JSON.parse(localStorage.getItem('phrQuizProgress')) || {};
+        const domainProgress = allProgress[this.selectedDomain] || {};
+
+        // Store userAnswers (convert Map to a JSON-compatible object)
+        domainProgress.userAnswers = Object.fromEntries(this.userAnswers);
+        // Save the current question index
+        domainProgress.currentQuestionIndex = this.currentQuestionIndex;
+
+        allProgress[this.selectedDomain] = domainProgress;
+        localStorage.setItem('phrQuizProgress', JSON.stringify(allProgress));
+    }
 }
 
 // Initialize when the page loads
 document.addEventListener('DOMContentLoaded', () => {
     window.quizManager = new QuizManager();
-    console.log('QuizManager initialized, progressTracker:', window.progressTracker);
 });
