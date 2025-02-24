@@ -1,4 +1,7 @@
 // quiz.js
+import ProgressTracker from './progress.js';
+import { domainData } from './config.js';
+
 class QuizManager {
     constructor() {
         this.selectedDomain = localStorage.getItem('selectedDomain');
@@ -8,6 +11,7 @@ class QuizManager {
         this.flaggedQuestions = new Set();
         this.timer = 0;
         this.timerInterval = null;
+        this.progressTracker = window.progressTracker || new ProgressTracker(); // Initialize or use existing ProgressTracker
         this.initializeQuiz();
     }
 
@@ -36,7 +40,7 @@ class QuizManager {
         const domainTitle = document.getElementById('domainTitle');
         if (domainTitle) {
             domainTitle.textContent = this.selectedDomain.charAt(0).toUpperCase() + 
-                                    this.selectedDomain.slice(1);
+                                    this.selectedDomain.slice(1).replace('.js', '') + ' Management'; // Match config.js titles
         }
     }
 
@@ -73,11 +77,11 @@ class QuizManager {
         
         document.getElementById('questionText').textContent = question.text;
         
-// Update all question counters
-    const currentNum = this.currentQuestionIndex + 1;
-    document.getElementById('currentQuestion').textContent = currentNum;
-    document.getElementById('totalQuestions').textContent = this.questions.length;
-    document.getElementById('questionNumber').textContent = `Question ${currentNum}`;
+        // Update all question counters
+        const currentNum = this.currentQuestionIndex + 1;
+        document.getElementById('currentQuestion').textContent = currentNum;
+        document.getElementById('totalQuestions').textContent = this.questions.length;
+        document.getElementById('questionNumber').textContent = `Question ${currentNum}`;
     
         // Display shuffled options
         const optionsContainer = document.getElementById('optionsContainer');
@@ -169,6 +173,14 @@ class QuizManager {
             const isCorrect = shuffledOptions[optionIndex] === question.correctAnswer;
             this.showExplanation();
             this.displayCurrentQuestion();
+
+            // Save progress to ProgressTracker
+            this.progressTracker.updateProgress(
+                this.selectedDomain,
+                question.id,
+                isCorrect,
+                this.timer // Use timer as time spent for this question
+            );
         }
     }
 
@@ -209,19 +221,30 @@ class QuizManager {
     finishQuiz() {
         clearInterval(this.timerInterval);
         
-        // Calculate results
+        // Calculate results and update progress
         const totalQuestions = this.questions.length;
-        const answered = this.userAnswers.size;
-        const correct = Array.from(this.userAnswers.entries()).filter(([questionId, selectedIndex]) => {
+        Array.from(this.userAnswers.entries()).forEach(([questionId, selectedIndex]) => {
+            const question = this.questions.find(q => q.id === questionId);
+            const shuffledOptions = this.shuffledOptions.get(questionId);
+            const isCorrect = shuffledOptions[selectedIndex] === question.correctAnswer;
+            this.progressTracker.updateProgress(
+                this.selectedDomain,
+                questionId,
+                isCorrect,
+                this.timer // Total time spent for the quiz
+            );
+        });
+
+        // Show results
+        const correctCount = Array.from(this.userAnswers.entries()).filter(([questionId, selectedIndex]) => {
             const question = this.questions.find(q => q.id === questionId);
             const shuffledOptions = this.shuffledOptions.get(questionId);
             return shuffledOptions[selectedIndex] === question.correctAnswer;
         }).length;
 
-        // Show results
-        document.getElementById('finalScore').textContent = `${Math.round((correct/totalQuestions) * 100)}%`;
+        document.getElementById('finalScore').textContent = `${Math.round((correctCount / totalQuestions) * 100)}%`;
         document.getElementById('timeTaken').textContent = this.formatTime(this.timer);
-        document.getElementById('correctCount').textContent = `${correct}/${totalQuestions}`;
+        document.getElementById('correctCount').textContent = `${correctCount}/${totalQuestions}`;
         document.getElementById('quizSummary').classList.remove('hidden');
     }
 
