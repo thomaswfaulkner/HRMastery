@@ -26,7 +26,6 @@ class QuizManager {
             this.questions = module.default;
             
             if (this.questions && this.questions.length > 0) {
-                // Verify totalQuestions matches config.js
                 const expectedQuestions = domainData[this.selectedDomain].totalQuestions;
                 if (this.questions.length !== expectedQuestions) {
                     console.warn(`Question count mismatch for ${this.selectedDomain}: expected ${expectedQuestions}, got ${this.questions.length}`);
@@ -39,6 +38,7 @@ class QuizManager {
                 this.updateDomainTitle();
                 this.startTimer();
                 this.displayCurrentQuestion();
+                this.populateJumpTo();
                 this.setupEventListeners();
             } else {
                 console.error('No questions loaded for domain:', this.selectedDomain);
@@ -51,7 +51,7 @@ class QuizManager {
     updateDomainTitle() {
         const domainTitle = document.getElementById('domainTitle');
         if (domainTitle) {
-            domainTitle.textContent = domainData[this.selectedDomain].title; // Use title from config.js
+            domainTitle.textContent = domainData[this.selectedDomain].title;
         }
     }
 
@@ -132,6 +132,17 @@ class QuizManager {
         }
     }
 
+    populateJumpTo() {
+        const jumpToSelect = document.getElementById('jumpToSelect');
+        jumpToSelect.innerHTML = '<option value="">Jump To...</option>';
+        this.questions.forEach((_, index) => {
+            const option = document.createElement('option');
+            option.value = index;
+            option.textContent = `Question ${index + 1}`;
+            jumpToSelect.appendChild(option);
+        });
+    }
+
     setupEventListeners() {
         document.getElementById('optionsContainer').addEventListener('click', (e) => {
             if (e.target.classList.contains('option')) {
@@ -154,6 +165,16 @@ class QuizManager {
         document.getElementById('flagButton').addEventListener('click', () => this.toggleFlagQuestion());
         document.getElementById('reviewButton').addEventListener('click', () => this.reviewQuiz());
         document.getElementById('finishButton').addEventListener('click', () => this.returnToDomains());
+
+        // Add Jump To event listener
+        document.getElementById('jumpToSelect').addEventListener('change', (e) => {
+            const newIndex = parseInt(e.target.value);
+            if (newIndex >= 0 && newIndex < this.questions.length) {
+                this.currentQuestionIndex = newIndex;
+                this.displayCurrentQuestion();
+                e.target.selectedIndex = 0; // Reset to "Jump To..." after jumping
+            }
+        });
     }
 
     handleOptionSelect(optionIndex) {
@@ -168,7 +189,7 @@ class QuizManager {
 
             this.progressTracker.updateProgress(
                 this.selectedDomain,
-                question.id, // Use the string ID like "BUS_001"
+                question.id,
                 isCorrect,
                 this.timer
             );
@@ -220,7 +241,7 @@ class QuizManager {
             console.log('Final progress update for:', { domain: this.selectedDomain, questionId, isCorrect, timeSpent: this.timer });
             this.progressTracker.updateProgress(
                 this.selectedDomain,
-                questionId, // Use the string ID like "BUS_001"
+                questionId,
                 isCorrect,
                 this.timer
             );
