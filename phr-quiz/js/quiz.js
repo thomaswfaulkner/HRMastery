@@ -4,13 +4,17 @@ import { domainData } from './config.js';
 
 class QuizManager {
     constructor() {
-        this.selectedDomain = localStorage.getItem('selectedDomain');
-        if (!this.selectedDomain || !domainData[this.selectedDomain]) {
-            console.error('Invalid domain:', this.selectedDomain);
-            return;
-        }
-        this.currentQuestionIndex = 0;
-        this.userAnswers = new Map();
+      this.selectedDomain = localStorage.getItem('selectedDomain');
+    
+      // Grab overall progress from localStorage
+      const allProgress = JSON.parse(localStorage.getItem('phrQuizProgress')) || {};
+      const domainProgress = allProgress[this.selectedDomain] || {};
+    
+      // Restore userAnswers (Map in memory, but saved as an object in localStorage)
+      this.userAnswers = new Map(Object.entries(domainProgress.userAnswers || {}));
+
+        // Restore currentQuestionIndex
+        this.currentQuestionIndex = domainProgress.currentQuestionIndex || 0;
         this.shuffledOptions = new Map(); // Store shuffled options for each question
         this.flaggedQuestions = new Set();
         this.timer = 0;
