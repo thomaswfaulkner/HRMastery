@@ -128,15 +128,19 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 document.addEventListener('DOMContentLoaded', () => {
-  const resetButton = document.getElementById('resetProgressButton');
-  if (resetButton) {
-    resetButton.addEventListener('click', () => {
-      if (confirm('Are you sure you want to reset your progress?')) {
-        localStorage.removeItem('phrQuizProgress');
-        location.reload(); // Reloads the page, reinitializing progress data and domain cards.
-      }
-    });
-  }
+    window.progressTracker = new ProgressTracker();
+    console.log('ProgressTracker initialized:', window.progressTracker);
+
+    const resetButton = document.getElementById('resetProgressButton');
+    if (resetButton) {
+        resetButton.addEventListener('click', () => {
+            if (confirm('Are you sure you want to reset your progress?')) {
+                localStorage.removeItem('phrQuizProgress');
+                location.reload();
+            }
+        });
+    }
 });
+
 
 export default ProgressTracker;
