@@ -1,3 +1,4 @@
+
 // information.js
 const questions = [
     {
@@ -230,126 +231,126 @@ const questions = [
         explanation: "Data aggregation with standardized metrics ensures consistent measurement and reporting of satisfaction across sources. Choosing one format loses data, averaging masks differences, and creating reports doesn't address consistency."
     },
     // Additional questions focusing on records management
-{
-    id: "HIM_020",
-    text: "An HR department plans to digitize personnel files. What's the most critical consideration for electronic storage?",
-    options: [
-        "Scanning speed capabilities",
-        "Implementation of system controls for integrity and security",
-        "Storage space requirements",
-        "File naming conventions"
-    ],
-    correctAnswer: "Implementation of system controls for integrity and security",
-    explanation: "System controls for integrity and security are essential for electronic storage, ensuring data accuracy, preventing unauthorized access, and maintaining compliance. Scanning speed is tactical, storage space is technical, and naming is administrative."
-},
-{
-    id: "HIM_021",
-    text: "HR discovers medical information mixed with general personnel files. What's the most appropriate immediate action?",
-    options: [
-        "Password protect all files",
-        "Create separate, secure storage for confidential medical records",
-        "Restrict file access",
-        "Update file labels"
-    ],
-    correctAnswer: "Create separate, secure storage for confidential medical records",
-    explanation: "Medical records must be stored separately from personnel files to protect confidentiality and prevent their use in employment decisions. Passwords alone don't address separation, restriction is insufficient, and labels don't ensure proper segregation."
-},
-{
-    id: "HIM_022",
-    text: "During a system upgrade, HR needs to ensure I-9 form accessibility. What's the most effective approach?",
-    options: [
-        "Print paper copies temporarily",
-        "Implement an indexing system with quality assurance checks",
-        "Save files to local drives",
-        "Extend current system access"
-    ],
-    correctAnswer: "Implement an indexing system with quality assurance checks",
-    explanation: "An indexing system with quality checks ensures I-9s remain retrievable and legible while maintaining compliance with USCIS requirements. Paper copies regress functionality, local storage risks security, and extending access doesn't ensure accessibility."
-},
-{
-    id: "HIM_023",
-    text: "HR needs to dispose of personnel records containing sensitive information. What's the most compliant approach?",
-    options: [
-        "Delete electronic files",
-        "Implement FTC-compliant destruction methods with verification",
-        "Store records offsite",
-        "Extend retention period"
-    ],
-    correctAnswer: "Implement FTC-compliant destruction methods with verification",
-    explanation: "FTC-compliant destruction methods ensure proper disposal of sensitive information while maintaining compliance. Simple deletion is insufficient, storage doesn't address disposal, and extension avoids proper destruction requirements."
-},
-{
-    id: "HIM_024",
-    text: "An organization implementing a new records retention policy must prioritize controls. What's the most comprehensive approach?",
-    options: [
-        "Set retention schedules",
-        "Define controls for entire record lifecycle from creation to destruction",
-        "Establish access lists",
-        "Create backup procedures"
-    ],
-    correctAnswer: "Define controls for entire record lifecycle from creation to destruction",
-    explanation: "Comprehensive lifecycle controls ensure proper management of records from creation through destruction, meeting legal requirements and best practices. Schedules alone are insufficient, access lists are partial, and backups address only storage."
-},
-{
-    id: "HIM_025",
-    text: "HR identifies inconsistent employee data across multiple systems. What's the most effective solution?",
-    options: [
-        "Manually reconcile records",
-        "Implement data integrity controls with validation checks",
-        "Increase data entry staff",
-        "Create new databases"
-    ],
-    correctAnswer: "Implement data integrity controls with validation checks",
-    explanation: "Data integrity controls with validation ensure consistent and accurate data across systems through automated verification. Manual reconciliation is tactical, staffing doesn't prevent errors, and new databases don't address consistency."
-},
-{
-    id: "HIM_026",
-    text: "A company's remote work policy increases system access needs. What's the most secure solution?",
-    options: [
-        "Extend access hours",
-        "Implement tiered permissions with multifactor authentication",
-        "Create more user accounts",
-        "Simplify login process"
-    ],
-    correctAnswer: "Implement tiered permissions with multifactor authentication",
-    explanation: "Tiered permissions with multifactor authentication provides secure, role-based access while protecting against unauthorized entry. Extended hours don't address security, more accounts increase risk, and simplified logins reduce security."
-},
-{
-    id: "HIM_027",
-    text: "During an audit, HR discovers missing training records required by OSHA. What's the most appropriate solution?",
-    options: [
-        "Recreate missing records",
-        "Implement a comprehensive records management system with compliance tracking",
-        "Increase audit frequency",
-        "Update retention schedule"
-    ],
-    correctAnswer: "Implement a comprehensive records management system with compliance tracking",
-    explanation: "A comprehensive system with compliance tracking ensures proper maintenance and retention of required records while preventing future gaps. Recreation may be fraudulent, increased audits are reactive, and schedules don't ensure compliance."
-},
-{
-    id: "HIM_028",
-    text: "HR needs to ensure data accuracy in employee self-service updates. What's the most effective approach?",
-    options: [
-        "Limit self-service options",
-        "Implement automated validation controls with audit trails",
-        "Increase manual review",
-        "Require manager approval"
-    ],
-    correctAnswer: "Implement automated validation controls with audit trails",
-    explanation: "Automated validation with audit trails ensures data accuracy while maintaining efficiency and accountability. Limiting options reduces functionality, manual review is inefficient, and manager approval doesn't ensure accuracy."
-},
-{
-    id: "HIM_029",
-    text: "An organization faces increasing privacy regulations. What's the most strategic response for HR data management?",
-    options: [
-        "Restrict all data access",
-        "Develop integrated privacy controls with regular compliance updates",
-        "Outsource data storage",
-        "Create more backups"
-    ],
-    correctAnswer: "Develop integrated privacy controls with regular compliance updates",
-    explanation: "Integrated privacy controls with regular updates ensure ongoing compliance while maintaining operational effectiveness. Restriction limits functionality, outsourcing doesn't eliminate responsibility, and backups don't address privacy."
-}
+    {
+        id: "HIM_020",
+        text: "An HR department plans to digitize personnel files. What's the most critical consideration for electronic storage?",
+        options: [
+            "Scanning speed capabilities",
+            "Implementation of system controls for integrity and security",
+            "Storage space requirements",
+            "File naming conventions"
+        ],
+        correctAnswer: "Implementation of system controls for integrity and security",
+        explanation: "System controls for integrity and security are essential for electronic storage, ensuring data accuracy, preventing unauthorized access, and maintaining compliance. Scanning speed is tactical, storage space is technical, and naming is administrative."
+    },
+    {
+        id: "HIM_021",
+        text: "HR discovers medical information mixed with general personnel files. What's the most appropriate immediate action?",
+        options: [
+            "Password protect all files",
+            "Create separate, secure storage for confidential medical records",
+            "Restrict file access",
+            "Update file labels"
+        ],
+        correctAnswer: "Create separate, secure storage for confidential medical records",
+        explanation: "Medical records must be stored separately from personnel files to protect confidentiality and prevent their use in employment decisions. Passwords alone don't address separation, restriction is insufficient, and labels don't ensure proper segregation."
+    },
+    {
+        id: "HIM_022",
+        text: "During a system upgrade, HR needs to ensure I-9 form accessibility. What's the most effective approach?",
+        options: [
+            "Print paper copies temporarily",
+            "Implement an indexing system with quality assurance checks",
+            "Save files to local drives",
+            "Extend current system access"
+        ],
+        correctAnswer: "Implement an indexing system with quality assurance checks",
+        explanation: "An indexing system with quality checks ensures I-9s remain retrievable and legible while maintaining compliance with USCIS requirements. Paper copies regress functionality, local storage risks security, and extending access doesn't ensure accessibility."
+    },
+    {
+        id: "HIM_023",
+        text: "HR needs to dispose of personnel records containing sensitive information. What's the most compliant approach?",
+        options: [
+            "Delete electronic files",
+            "Implement FTC-compliant destruction methods with verification",
+            "Store records offsite",
+            "Extend retention period"
+        ],
+        correctAnswer: "Implement FTC-compliant destruction methods with verification",
+        explanation: "FTC-compliant destruction methods ensure proper disposal of sensitive information while maintaining compliance. Simple deletion is insufficient, storage doesn't address disposal, and extension avoids proper destruction requirements."
+    },
+    {
+        id: "HIM_024",
+        text: "An organization implementing a new records retention policy must prioritize controls. What's the most comprehensive approach?",
+        options: [
+            "Set retention schedules",
+            "Define controls for entire record lifecycle from creation to destruction",
+            "Establish access lists",
+            "Create backup procedures"
+        ],
+        correctAnswer: "Define controls for entire record lifecycle from creation to destruction",
+        explanation: "Comprehensive lifecycle controls ensure proper management of records from creation through destruction, meeting legal requirements and best practices. Schedules alone are insufficient, access lists are partial, and backups address only storage."
+    },
+    {
+        id: "HIM_025",
+        text: "HR identifies inconsistent employee data across multiple systems. What's the most effective solution?",
+        options: [
+            "Manually reconcile records",
+            "Implement data integrity controls with validation checks",
+            "Increase data entry staff",
+            "Create new databases"
+        ],
+        correctAnswer: "Implement data integrity controls with validation checks",
+        explanation: "Data integrity controls with validation ensure consistent and accurate data across systems through automated verification. Manual reconciliation is tactical, staffing doesn't prevent errors, and new databases don't address consistency."
+    },
+    {
+        id: "HIM_026",
+        text: "A company's remote work policy increases system access needs. What's the most secure solution?",
+        options: [
+            "Extend access hours",
+            "Implement tiered permissions with multifactor authentication",
+            "Create more user accounts",
+            "Simplify login process"
+        ],
+        correctAnswer: "Implement tiered permissions with multifactor authentication",
+        explanation: "Tiered permissions with multifactor authentication provides secure, role-based access while protecting against unauthorized entry. Extended hours don't address security, more accounts increase risk, and simplified logins reduce security."
+    },
+    {
+        id: "HIM_027",
+        text: "During an audit, HR discovers missing training records required by OSHA. What's the most appropriate solution?",
+        options: [
+            "Recreate missing records",
+            "Implement a comprehensive records management system with compliance tracking",
+            "Increase audit frequency",
+            "Update retention schedule"
+        ],
+        correctAnswer: "Implement a comprehensive records management system with compliance tracking",
+        explanation: "A comprehensive system with compliance tracking ensures proper maintenance and retention of required records while preventing future gaps. Recreation may be fraudulent, increased audits are reactive, and schedules don't ensure compliance."
+    },
+    {
+        id: "HIM_028",
+        text: "HR needs to ensure data accuracy in employee self-service updates. What's the most effective approach?",
+        options: [
+            "Limit self-service options",
+            "Implement automated validation controls with audit trails",
+            "Increase manual review",
+            "Require manager approval"
+        ],
+        correctAnswer: "Implement automated validation controls with audit trails",
+        explanation: "Automated validation with audit trails ensures data accuracy while maintaining efficiency and accountability. Limiting options reduces functionality, manual review is inefficient, and manager approval doesn't ensure accuracy."
+    },
+    {
+        id: "HIM_029",
+        text: "An organization faces increasing privacy regulations. What's the most strategic response for HR data management?",
+        options: [
+            "Restrict all data access",
+            "Develop integrated privacy controls with regular compliance updates",
+            "Outsource data storage",
+            "Create more backups"
+        ],
+        correctAnswer: "Develop integrated privacy controls with regular compliance updates",
+        explanation: "Integrated privacy controls with regular updates ensure ongoing compliance while maintaining operational effectiveness. Restriction limits functionality, outsourcing doesn't eliminate responsibility, and backups don't address privacy."
+    }
 ];
 
 export default questions;
