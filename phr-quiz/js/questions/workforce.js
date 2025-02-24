@@ -527,7 +527,247 @@ const questions = [
         ],
         correctAnswer: "Integrate a Competency Mapping Model with measurable onboarding goals",
         explanation: "A Competency Mapping Model aligns onboarding with measurable success systemically, ensuring readiness strategically. Extra sessions patch tactically, manager clarification shifts partially, and shortening dilutes without addressing metrics."
-    }
+    },
+    {
+    "id": "WFP_200",
+    "text": "A company is expanding and needs to align its workforce strategy with future business goals. What is the first step in workforce planning?",
+    "options": [
+        "Analyzing current workforce capabilities",
+        "Advertising open positions",
+        "Conducting employee exit interviews",
+        "Implementing a hiring freeze"
+    ],
+    "correctAnswer": "Analyzing current workforce capabilities",
+    "explanation": "Workforce planning begins with assessing existing skills to identify gaps and make informed hiring decisions. Advertising jobs (B) is part of recruitment, not planning. Exit interviews (C) provide insights but do not forecast future needs. A hiring freeze (D) is a reactive response, not a strategy."
+},
+{
+    "id": "WFP_201",
+    "text": "A human resources team is developing a long-term talent acquisition strategy. Which factor is most important in ensuring workforce alignment with organizational goals?",
+    "options": [
+        "Selecting candidates based on immediate needs",
+        "Forecasting future skill requirements",
+        "Filling vacancies as quickly as possible",
+        "Hiring based solely on referrals from existing employees"
+    ],
+    "correctAnswer": "Forecasting future skill requirements",
+    "explanation": "Anticipating future skill needs ensures that hiring aligns with business growth and evolving workforce demands. Immediate hiring (A) focuses only on short-term needs. Quick hiring (C) can lead to poor fit. Relying on referrals (D) limits diversity and talent access."
+},
+{
+    "id": "WFP_202",
+    "text": "Which of the following best differentiates workforce planning from talent acquisition?",
+    "options": [
+        "Workforce planning focuses on job postings, while talent acquisition deals with performance management",
+        "Workforce planning is a proactive approach to staffing, while talent acquisition focuses on filling immediate vacancies",
+        "Workforce planning only applies to large corporations, while talent acquisition applies to all businesses",
+        "Workforce planning eliminates the need for recruiting by using automation"
+    ],
+    "correctAnswer": "Workforce planning is a proactive approach to staffing, while talent acquisition focuses on filling immediate vacancies",
+    "explanation": "Workforce planning takes a long-term, strategic approach, while talent acquisition addresses current hiring needs. Job postings (A) are a tactical element, not the core focus of planning. Workforce planning applies to all businesses (C), not just large ones. Automation (D) does not replace workforce planning."
+},
+{
+    "id": "WFP_203",
+    "text": "When selecting recruitment methods for different job levels, which consideration is most important?",
+    "options": [
+        "Using a single recruitment method for all positions",
+        "Matching the sourcing method to the experience level required",
+        "Prioritizing internal candidates regardless of job function",
+        "Focusing on passive candidates rather than active job seekers"
+    ],
+    "correctAnswer": "Matching the sourcing method to the experience level required",
+    "explanation": "Effective recruitment strategies consider job level, skills, and industry norms. A one-size-fits-all approach (A) is ineffective. Prioritizing internal candidates (C) without assessing qualifications limits hiring effectiveness. Focusing only on passive candidates (D) ignores strong active job seekers."
+},
+{
+    "id": "WFP_204",
+    "text": "A company wants to build a diverse talent pipeline. Which strategy would be most effective in achieving this goal?",
+    "options": [
+        "Recruiting only from a single well-known university",
+        "Expanding outreach to underrepresented groups and nontraditional talent sources",
+        "Hiring only through employee referrals",
+        "Prioritizing candidates with previous experience in similar roles"
+    ],
+    "correctAnswer": "Expanding outreach to underrepresented groups and nontraditional talent sources",
+    "explanation": "Building a diverse workforce requires reaching broader talent pools. Recruiting from only one university (A) limits diversity. Employee referrals (C) reinforce existing demographics. Prioritizing experience (D) may exclude candidates with transferable skills."
+},
+{
+    "id": "WFP_210",
+    "text": "Which of the following is a key benefit of using structured selection procedures, such as assessment centers or structured interviews?",
+    "options": [
+        "Reducing hiring time by eliminating multiple screening steps",
+        "Ensuring a standardized and legally defensible hiring process",
+        "Allowing hiring managers to make decisions based on intuition",
+        "Prioritizing internal candidates over external applicants"
+    ],
+    "correctAnswer": "Ensuring a standardized and legally defensible hiring process",
+    "explanation": "Structured selection procedures minimize bias and improve consistency in hiring decisions. Reducing screening steps (A) for speed can compromise quality and legal defensibility. Allowing managers to hire based on intuition (C) increases bias and inconsistency. Automatically prioritizing internal candidates (D) can limit external innovation and overlook better-qualified applicants."
+},
+{
+    "id": "WFP_211",
+    "text": "What is a critical component of conducting a fair and effective candidate screening process?",
+    "options": [
+        "Using informal, unstructured interviews to get to know candidates",
+        "Ensuring all assessments are job-related and legally compliant",
+        "Prioritizing candidates who match the hiring manager’s personality",
+        "Selecting candidates based on industry reputation alone"
+    ],
+    "correctAnswer": "Ensuring all assessments are job-related and legally compliant",
+    "explanation": "Effective screening ensures fairness, compliance, and job relevance in hiring. Unstructured interviews (A) lack reliability and lead to subjective decisions. Selecting candidates based on personality fit with the hiring manager (C) encourages bias. Industry reputation (D) does not guarantee a candidate’s actual skills or cultural fit with the company."
+},
+{
+    "id": "WFP_212",
+    "text": "An organization wants to improve its onboarding process to increase employee retention. Which of the following is the best approach?",
+    "options": [
+        "Providing new hires with a structured orientation and mentoring program",
+        "Requiring employees to learn company policies independently",
+        "Limiting onboarding to administrative paperwork",
+        "Delaying orientation until employees have been on the job for 90 days"
+    ],
+    "correctAnswer": "Providing new hires with a structured orientation and mentoring program",
+    "explanation": "A comprehensive onboarding process improves employee engagement, retention, and productivity. Requiring employees to learn policies independently (B) can result in confusion and poor adaptation. Limiting onboarding to paperwork (C) misses cultural and role-specific integration. Delaying orientation (D) prevents employees from receiving critical early support."
+},
+{
+    "id": "WFP_213",
+    "text": "A company is struggling with high turnover among new hires. What post-hire activity is most likely to address this issue?",
+    "options": [
+        "Offering higher salaries to new employees",
+        "Implementing a comprehensive onboarding and training program",
+        "Increasing annual performance reviews",
+        "Reducing the selection process to speed up hiring"
+    ],
+    "correctAnswer": "Implementing a comprehensive onboarding and training program",
+    "explanation": "Proper onboarding ensures new hires integrate successfully and reduces early turnover. Offering higher salaries (A) alone does not address retention issues tied to culture and engagement. Increasing annual performance reviews (C) focuses on long-term evaluation rather than initial success. Shortening the hiring process (D) may compromise selection quality, leading to higher turnover."
+},
+{
+    "id": "WFP_214",
+    "text": "In workforce planning, what is the primary purpose of a skills inventory?",
+    "options": [
+        "Identifying gaps between current employee skills and future organizational needs",
+        "Ranking employees based on performance metrics",
+        "Determining which employees should receive promotions",
+        "Evaluating individual employee job satisfaction"
+    ],
+    "correctAnswer": "Identifying gaps between current employee skills and future organizational needs",
+    "explanation": "A skills inventory is used to assess existing capabilities and determine areas for development or hiring. Ranking employees based on performance (B) focuses on evaluation rather than workforce planning. Using it to determine promotions (C) overlooks other factors such as leadership potential. Evaluating job satisfaction (D) is important but is not the primary purpose of a skills inventory."
+},
+{
+    "id": "WFP_215",
+    "text": "A company’s HR team is analyzing workforce data to determine future hiring needs. What factor is most relevant to this analysis?",
+    "options": [
+        "Employee turnover rates and projected retirements",
+        "Competitor branding strategies",
+        "Customer satisfaction survey results",
+        "Office space availability"
+    ],
+    "correctAnswer": "Employee turnover rates and projected retirements",
+    "explanation": "Analyzing turnover rates and expected retirements helps HR predict staffing needs and plan for talent gaps. Competitor branding strategies (B) impact employer reputation but do not directly determine workforce needs. Customer satisfaction surveys (C) focus on external service quality rather than internal staffing. Office space availability (D) affects logistics but is not a primary factor in workforce planning."
+},
+{
+    "id": "WFP_216",
+    "text": "A data-driven approach to talent acquisition helps organizations by:",
+    "options": [
+        "Eliminating the need for interviews",
+        "Ensuring that hiring decisions align with business needs and workforce trends",
+        "Replacing traditional recruitment methods with AI-based hiring",
+        "Avoiding the need for workforce planning"
+    ],
+    "correctAnswer": "Ensuring that hiring decisions align with business needs and workforce trends",
+    "explanation": "A data-driven approach improves hiring accuracy by using analytics to align workforce planning with organizational objectives. Eliminating interviews (A) removes critical evaluation steps. Replacing all traditional hiring methods with AI (C) may overlook human judgment. Workforce planning (D) is still essential even in data-driven recruitment."
+},
+{
+    "id": "WFP_217",
+    "text": "Which of the following best describes an effective candidate experience in the hiring process?",
+    "options": [
+        "A lengthy and complex application process to ensure only serious applicants apply",
+        "Clear communication, timely updates, and a structured interview process",
+        "Minimal interaction with candidates until a hiring decision is made",
+        "An informal, unstructured process that relies on quick decision-making"
+    ],
+    "correctAnswer": "Clear communication, timely updates, and a structured interview process",
+    "explanation": "A positive candidate experience involves transparency, responsiveness, and organization. A lengthy and complex process (A) discourages applicants. Minimal interaction (C) makes candidates feel undervalued. An unstructured process (D) lacks consistency and fairness."
+},
+{
+    "id": "WFP_218",
+    "text": "Why is cultural fit an important consideration in the hiring process?",
+    "options": [
+        "It ensures that all employees share identical personalities and backgrounds",
+        "It increases the likelihood that new hires will integrate successfully into the organization",
+        "It replaces the need for technical skills in candidate evaluation",
+        "It limits diversity by prioritizing team cohesion over different perspectives"
+    ],
+    "correctAnswer": "It increases the likelihood that new hires will integrate successfully into the organization",
+    "explanation": "Cultural fit ensures employees adapt well to the company's values and work environment. Making all employees identical (A) is unrealistic and limits diversity. Cultural fit does not replace technical skills (C), nor should it restrict diverse perspectives (D)."
+},
+{
+    "id": "WFP_219",
+    "text": "A company is reviewing its talent acquisition metrics. Which key performance indicator (KPI) is most useful for assessing the efficiency of the hiring process?",
+    "options": [
+        "Number of job applications received per opening",
+        "Time-to-fill and quality-of-hire metrics",
+        "Total company revenue growth",
+        "Percentage of employees attending company events"
+    ],
+    "correctAnswer": "Time-to-fill and quality-of-hire metrics",
+    "explanation": "These KPIs measure hiring efficiency by tracking speed and effectiveness. The number of applications per opening (A) does not indicate quality. Company revenue growth (C) is influenced by many factors beyond hiring. Employee event participation (D) is unrelated to hiring efficiency."
+},
+{
+    "id": "WFP_220",
+    "text": "A recruiter is determining whether an applicant has the necessary knowledge, skills, and abilities (KSAs) for a position. What is the most effective way to assess this?",
+    "options": [
+        "Reviewing the candidate’s resume and assuming qualifications match experience",
+        "Conducting skills tests, structured interviews, and reference checks",
+        "Asking for a personal reference from a previous manager",
+        "Prioritizing candidates with the most years of experience"
+    ],
+    "correctAnswer": "Conducting skills tests, structured interviews, and reference checks",
+    "explanation": "Using multiple assessment methods ensures a thorough evaluation of a candidate’s qualifications. Relying on resumes alone (A) assumes accuracy without validation. Personal references (C) can be biased. Experience alone (D) does not guarantee competency."
+},
+{
+    "id": "WFP_221",
+    "text": "A company is developing a long-term succession plan. What is the primary objective of this process?",
+    "options": [
+        "Reducing headcount to lower labor costs",
+        "Ensuring a pipeline of qualified employees for future leadership roles",
+        "Hiring external candidates to fill all leadership positions",
+        "Avoiding employee promotions to maintain consistency"
+    ],
+    "correctAnswer": "Ensuring a pipeline of qualified employees for future leadership roles",
+    "explanation": "Succession planning prepares internal talent for leadership to maintain business continuity. Reducing headcount (A) cuts costs but does not address future needs. Hiring externally for all leadership roles (C) ignores internal development. Avoiding promotions (D) leads to stagnation."
+},
+{
+    "id": "WFP_222",
+    "text": "Which of the following best supports internal mobility within an organization?",
+    "options": [
+        "Providing employees with opportunities for cross-training and career development",
+        "Limiting job postings to external candidates",
+        "Focusing only on lateral moves within the same department",
+        "Encouraging employees to stay in the same role for at least five years"
+    ],
+    "correctAnswer": "Providing employees with opportunities for cross-training and career development",
+    "explanation": "Internal mobility is supported by skills development and career growth opportunities. Limiting job postings to external candidates (B) restricts internal advancement. Only allowing lateral moves (C) does not encourage upward mobility. Requiring long tenure in the same role (D) can reduce motivation and retention."
+},
+{
+    "id": "WFP_223",
+    "text": "A company is revising its hiring process to reduce bias and improve decision-making. Which approach is most effective?",
+    "options": [
+        "Standardizing interview questions and using objective assessment criteria",
+        "Allowing managers to rely on instinct and personal preferences",
+        "Only hiring employees who fit a predetermined cultural mold",
+        "Avoiding structured selection procedures to keep the process flexible"
+    ],
+    "correctAnswer": "Standardizing interview questions and using objective assessment criteria",
+    "explanation": "Structured hiring reduces bias and ensures fair evaluation. Relying on manager instincts (B) introduces subjectivity. Hiring based on cultural conformity (C) can limit diversity. Avoiding structured procedures (D) increases inconsistency and bias."
+},
+{
+    "id": "WFP_224",
+    "text": "A growing company wants to ensure long-term workforce sustainability. What strategy best aligns with this goal?",
+    "options": [
+        "Continuously hiring to fill immediate vacancies without considering long-term needs",
+        "Implementing a comprehensive workforce planning model that accounts for future business goals",
+        "Reducing investment in employee development to minimize costs",
+        "Relying solely on automation to replace human labor"
+    ],
+    "correctAnswer": "Implementing a comprehensive workforce planning model that accounts for future business goals",
+    "explanation": "Strategic workforce planning ensures sustainable hiring aligned with long-term objectives. Filling vacancies without foresight (A) leads to workforce instability. Reducing investment in employee development (C) limits future talent. Automation (D) can be helpful but should complement, not replace, human labor."
+}
     // Add more workforce planning questions
 ];
 
