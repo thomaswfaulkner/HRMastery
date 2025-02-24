@@ -84,8 +84,7 @@ const questions = [
         ],
         correctAnswer: "Design integrated data architecture with validation controls",
         explanation: "Integrated architecture with controls systematically addresses data silos and validation. Manual steps describe tactically, workarounds patch symptoms, and capability reviews miss integration needs."
-    }
-    // Additional questions for information.js
+    },
     {
         id: "HIM_008",
         text: "A mid-sized company's HR team struggles with manual data entry across multiple systems. When evaluating HRIS solutions, what's the most critical factor to analyze?",
@@ -230,7 +229,6 @@ const questions = [
         correctAnswer: "Implement data aggregation with standardized metrics",
         explanation: "Data aggregation with standardized metrics ensures consistent measurement and reporting of satisfaction across sources. Choosing one format loses data, averaging masks differences, and creating reports doesn't address consistency."
     },
-    // Additional questions focusing on records management
     {
         id: "HIM_020",
         text: "An HR department plans to digitize personnel files. What's the most critical consideration for electronic storage?",
