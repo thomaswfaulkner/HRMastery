@@ -125,22 +125,18 @@ class ProgressTracker {
 document.addEventListener('DOMContentLoaded', () => {
     window.progressTracker = new ProgressTracker();
     console.log('ProgressTracker initialized:', window.progressTracker);
-}
+});
+
 document.addEventListener('DOMContentLoaded', () => {
   const resetButton = document.getElementById('resetProgressButton');
   if (resetButton) {
     resetButton.addEventListener('click', () => {
       if (confirm('Are you sure you want to reset your progress?')) {
         localStorage.removeItem('phrQuizProgress');
-        // Reinitialize progress data and refresh domain cards
-        window.progressTracker.initializeProgress();
-        window.progressTracker.createDomainCards();
+        location.reload(); // Reloads the page, reinitializing progress data and domain cards.
       }
     });
   }
 });
-
-
-);
 
 export default ProgressTracker;
